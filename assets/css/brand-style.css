@@ -75,3 +75,14 @@ footer {
     border-bottom: 1px solid #ccc;
   }
 }
+
+/* Button Hover Effects */
+.coachj-button:hover {
+  background-color: #682c48; /* Slightly darker than #7a3a55 */
+  transition: background-color 0.3s ease;
+}
+
+.prospera-button:hover {
+  background-color: #2f3b2c; /* Slightly darker than #424f3e */
+  transition: background-color 0.3s ease;
+}
