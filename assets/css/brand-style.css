@@ -1,0 +1,75 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
+  padding: 10px 20px;
+  text-align: center;
+}
+.navbar a {
+  color: #5f308f;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Shared Buttons */
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* Coach J Theme */
+.coachj-bg {
+  background-color: #f8f8f8;
+}
+.coachj-button {
+  background-color: #7a3a55;
+}
+.coachj-highlight {
+  color: #82529c;
+}
+
+/* Prospera Theme */
+.prospera-bg {
+  background-color: #ffffff;
+}
+.prospera-button {
+  background-color: #424f3e;
+}
+.prospera-highlight {
+  color: #93b0e0;
+}
+
+/* Footer */
+footer {
+  background-color: #f8f8f8;
+  border-top: 1px solid #e5e5e5;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .split-container {
+    flex-direction: column;
+  }
+  .split-left, .split-right {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+}
