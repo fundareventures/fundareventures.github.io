@@ -1,4 +1,64 @@
 ---
 layout: home
-title: Home
+title: Fundare Ventures
 ---
+
+<style>
+  .split-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 80vh;
+    font-family: sans-serif;
+    text-align: center;
+  }
+  .split-left, .split-right {
+    flex: 1;
+    padding: 40px 20px;
+    box-sizing: border-box;
+  }
+  .split-left {
+    background-color: #f5f5f5;
+    border-right: 1px solid #ccc;
+  }
+  .split-right {
+    background-color: #ffffff;
+  }
+  .split-container h2 {
+    margin-bottom: 10px;
+  }
+  .split-container p {
+    max-width: 400px;
+    margin: 0 auto 20px;
+  }
+  .split-container a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  @media (max-width: 768px) {
+    .split-container {
+      flex-direction: column;
+    }
+    .split-left, .split-right {
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+</style>
+
+<div class="split-container">
+  <div class="split-left">
+    <h2>Coach J Financial</h2>
+    <p>For individuals who want to get organized, reduce financial stress, and finally feel in control of their money.</p>
+    <a href="/coachj">Learn More</a>
+  </div>
+  <div class="split-right">
+    <h2>Prospera by Fundare Ventures</h2>
+    <p>For employers who want to support their team with financial wellness benefits that improve retention, morale, and productivity.</p>
+    <a href="/prospera">Learn More</a>
+  </div>
+</div>
