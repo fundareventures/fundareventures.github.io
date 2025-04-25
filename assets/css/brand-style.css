@@ -8,18 +8,20 @@ body {
 
 /* Navigation Bar */
 .navbar {
-  background-color: #ffffff;
+  background-color: #5f308f; /* Primary purple */
   border-bottom: 1px solid #eee;
   padding: 10px 20px;
   text-align: center;
 }
+
 .navbar a {
-  color: #82529c;
+  color: #c4c2c5; /* Light gray for text */
   margin: 0 15px;
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
 }
+
 
 /* Shared Buttons */
 .btn {
