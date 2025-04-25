@@ -8,6 +8,46 @@ title: Fundare Ventures
   <meta charset="UTF-8">
   <title>Fundare Ventures</title>
   <link rel="stylesheet" href="/assets/css/brand-style.css">
+  <style>
+    body {
+      background-color: #f0f2f5; /* Light gray-blue background */
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .split-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      padding: 60px 20px;
+      flex-wrap: wrap;
+    }
+    .split-box {
+      flex: 1 1 300px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 40px 20px;
+      text-align: center;
+      max-width: 400px;
+    }
+    .split-box h2 {
+      margin-bottom: 20px;
+    }
+    .split-box p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+    .btn {
+      margin-top: 10px;
+    }
+    @media (max-width: 768px) {
+      .split-container {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -19,18 +59,21 @@ title: Fundare Ventures
   <a href="/aboutme">About Me</a>
 </nav>
 
-<!-- Split Layout -->
+<!-- Split Layout with Rounded Boxes -->
 <div class="split-container">
-  <div class="split-left coachj-bg">
+
+  <div class="split-box">
     <h2 class="coachj-highlight">Coach J Financial</h2>
     <p>For individuals who want to get organized, reduce financial stress, and finally feel in control of their money.</p>
     <a class="btn coachj-button" href="/coachj">Learn More</a>
   </div>
-  <div class="split-right prospera-bg">
+
+  <div class="split-box">
     <h2 class="prospera-highlight">Prospera by Fundare Ventures</h2>
     <p>For employers who want to support their team with financial wellness benefits that improve retention, morale, and productivity.</p>
     <a class="btn prospera-button" href="/prospera">Learn More</a>
   </div>
+
 </div>
 
 <!-- Footer -->
