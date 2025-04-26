@@ -1,16 +1,12 @@
 .hero-banner {
   position: relative;
-  min-height: 70vh; /* Make it a little taller for breathing room */
+  height: 70vh;
   background-image: url('/assets/img/plant-coin.jpg');
   background-size: cover;
-  background-position: center center; /* Centered horizontally and vertically */
+  background-position: center;
   background-repeat: no-repeat;
   color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+  overflow: hidden;
 }
 
 .hero-overlay {
@@ -23,51 +19,30 @@
   z-index: 1;
 }
 
-.hero-content {
+/* NEW: Center the text */
+.hero-inner-content {
   position: relative;
   z-index: 2;
-  padding: 20px;
-  max-width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  padding: 0 20px;
 }
 
-
+/* Already have */
 .hero-title {
   font-size: 48px;
   margin-bottom: 10px;
   font-weight: 700;
+  animation: fadeIn 1.5s ease-out forwards;
 }
 
 .hero-subtitle {
   font-size: 24px;
   font-weight: 400;
-}
-
-/* Feature image */
-.feature-image-container {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.feature-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-height: 400px;
-}
-/* Fade-in Animation */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(20px); /* Slightly lower */
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-title,
-.hero-subtitle {
   animation: fadeIn 1.5s ease-out forwards;
+  animation-delay: 0.5s;
 }
