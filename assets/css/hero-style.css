@@ -55,3 +55,19 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   max-height: 400px;
 }
+/* Fade-in Animation */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Slightly lower */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-title,
+.hero-subtitle {
+  animation: fadeIn 1.5s ease-out forwards;
+}
