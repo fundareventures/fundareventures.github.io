@@ -48,3 +48,17 @@
   animation: fadeIn 1.5s ease-out forwards;
   animation-delay: 0.5s;
 }
+/* Responsive tweaks for mobile screens */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 50vh; /* Make it shorter on mobile */
+  }
+
+  .hero-title {
+    font-size: 32px; /* Smaller headline */
+  }
+
+  .hero-subtitle {
+    font-size: 18px; /* Smaller subheadline */
+  }
+}
