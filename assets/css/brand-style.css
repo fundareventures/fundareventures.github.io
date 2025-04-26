@@ -1,31 +1,29 @@
 /* Navigation Bar */
 .navbar {
   background-color: #5f308f;
-  padding: 12px 30px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start; /* no automatic spread */
-  gap: 20px; /* space between logo and links */
+  padding: 20px 30px;
+  text-align: center;
 }
 
 .navbar img {
   height: 40px;
+  margin-bottom: 10px;
 }
 
 .navbar-links {
   display: flex;
+  justify-content: center;
   gap: 30px;
-  justify-content: center; /* center links inside their own group */
-  flex-grow: 1; /* push links away from logo */
+  margin-top: 10px;
 }
 
 .navbar-links a {
-  color: #c4c2c5;
+  color: #5f3O8f;
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
 }
+
 
 
 
