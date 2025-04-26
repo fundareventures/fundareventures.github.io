@@ -18,7 +18,7 @@
 }
 
 .navbar-links a {
-  color: #5f3O8f;
+  color: #5f308f; /* Primary purple */
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
@@ -56,14 +56,15 @@
 
 /* Footer */
 footer {
-  background-color: #ede6f3; /* Match navbar */
+  background-color: #f0f2f5; /* Light background for contrast now */
   padding: 20px;
-  text-align: center; /* Center footer text */
+  text-align: center;
   font-size: 14px;
-  color: #c4c2c5; /* Light gray text */
+  color: #5f308f; /* Primary purple */
 }
+
 footer a {
-  color: #c4c2c5;
+  color: #5f308f; /* Match footer text */
   text-decoration: none;
 }
 footer a:hover {
