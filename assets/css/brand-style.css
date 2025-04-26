@@ -1,8 +1,15 @@
 /* Navigation Layout */
 .navbar {
+<<<<<<< HEAD
   background-color: #ede6f3; /* Light purple background */
   padding: 20px 30px 10px 30px;
   text-align: left; /* Left-align the logo */
+=======
+  background-color: #5f308f; /* Primary purple */
+  border-bottom: 1px solid #eee;
+  padding: 10px 20px;
+  text-align: center;
+>>>>>>> parent of 174152e (add logo)
 }
 
 .navbar img {
