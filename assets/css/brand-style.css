@@ -1,10 +1,12 @@
 /* Navigation Bar */
 .navbar {
-  background-color: #ede6f3;
+  background-color: #5f308f;
   padding: 12px 30px;
-  display: flex; /* Make the navbar flexbox */
-  align-items: center; /* Vertically center logo and links */
-  justify-content: space-between; /* Logo left, links right */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start; /* no automatic spread */
+  gap: 20px; /* space between logo and links */
 }
 
 .navbar img {
@@ -14,15 +16,17 @@
 .navbar-links {
   display: flex;
   gap: 30px;
-  align-items: center;
+  justify-content: center; /* center links inside their own group */
+  flex-grow: 1; /* push links away from logo */
 }
 
-.navbar a {
+.navbar-links a {
   color: #c4c2c5;
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
 }
+
 
 
 /* Shared Buttons */
