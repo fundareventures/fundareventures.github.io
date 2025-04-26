@@ -1,11 +1,16 @@
-/* Hero banner */
 .hero-banner {
   position: relative;
-  height: 60vh;
+  min-height: 70vh; /* Make it a little taller for breathing room */
   background-image: url('/assets/img/plant-coin.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center center; /* Centered horizontally and vertically */
+  background-repeat: no-repeat;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
 .hero-overlay {
@@ -22,7 +27,9 @@
   position: relative;
   z-index: 2;
   padding: 20px;
+  max-width: 90%;
 }
+
 
 .hero-title {
   font-size: 48px;
