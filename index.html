@@ -7,7 +7,8 @@ title: Fundare Ventures
 <head>
   <meta charset="UTF-8">
   <title>Fundare Ventures</title>
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/brand-style.css">
+  <link rel="stylesheet" href="/assets/css/brand-style.css">
+  <link rel="stylesheet" href="/assets/css/hero-styles.css">
   <style>
     body {
       background-color: #f0f2f5; /* Light gray-blue background */
@@ -60,15 +61,13 @@ title: Fundare Ventures
   <a href="/aboutme">About Me</a>
 </nav>
 <!-- Hero Banner Section -->
-<section style="position: relative; height: 60vh; background-image: url('{{ site.baseurl }}/assets/img/plant-coin.jpg');">
-
-  <!-- Dark overlay for readability -->
-  <div style="position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: rgba(0,0,0,0.4); z-index: 1;"></div>
-
-  <div style="position: relative; z-index: 2; padding: 20px;">
-    <h1 style="font-size: 48px; margin-bottom: 10px; font-weight: 700;">Empower Yourself</h1>
-    <p style="font-size: 24px; font-weight: 400;">Reach Your Potential</p>
+<section class="hero-banner">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Empower Yourself</h1>
+    <p class="hero-subtitle">Reach Your Potential</p>
   </div>
+</section>
 
 </section>
 
