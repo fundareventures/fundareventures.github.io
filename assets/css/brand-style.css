@@ -1,6 +1,6 @@
 /* Navigation Bar */
 .navbar {
-  background-color: #5f308f;
+  background-color: #ede6f3;
   padding: 12px 30px;
   display: flex; /* Make the navbar flexbox */
   align-items: center; /* Vertically center logo and links */
@@ -54,7 +54,7 @@
 
 /* Footer */
 footer {
-  background-color: #5f308f; /* Match navbar */
+  background-color: #ede6f3; /* Match navbar */
   padding: 20px;
   text-align: center; /* Center footer text */
   font-size: 14px;
