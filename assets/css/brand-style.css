@@ -1,17 +1,29 @@
 /* Navigation Bar */
 .navbar {
-  background-color: #5f308f; /* Primary purple */
-  border-bottom: 1px solid #eee;
+  background-color: #5f308f;
   padding: 12px 30px;
-  text-align: center;
+  display: flex; /* Make the navbar flexbox */
+  align-items: center; /* Vertically center logo and links */
+  justify-content: space-between; /* Logo left, links right */
 }
+
+.navbar img {
+  height: 40px;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
 .navbar a {
-  color: #c4c2c5; /* Light gray for text */
-  margin: 0 15px;
+  color: #c4c2c5;
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
 }
+
 
 /* Shared Buttons */
 .btn {
