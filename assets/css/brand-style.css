@@ -1,21 +1,29 @@
 /* Navigation Layout */
 .navbar {
-  background-color: #ede6f3; /* Light purple background */
-  padding: 20px 30px 10px 30px;
-  text-align: left; /* Left-align the logo */
-}
-
-.navbar img {
-  height: 50px;
-  display: block;
-}
-
-/* Navigation Links */
-.navbar-links {
+  background-color: #ede6f3; /* Light purple */
   display: flex;
-  justify-content: center; /* Center the links */
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 30px;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.navbar-logo {
+  flex: 0 0 auto; /* Logo stays to the left */
+}
+
+.navbar-logo img {
+  height: 50px;
+}
+
+.navbar-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
   gap: 30px;
-  margin-top: 10px;
+  align-items: center;
 }
 
 .navbar-links a {
@@ -24,6 +32,7 @@
   font-weight: 600;
   font-size: 18px;
 }
+
 
 /* Shared Buttons */
 .btn {
