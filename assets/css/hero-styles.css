@@ -62,10 +62,10 @@
 }
 
 /* Mobile Optimization for Hero Banner */
-@media (max-width: 768px) {
-  body {
-    background-color: pink !important; /* Add !important to override inline styles */
+<style>
+  @media (max-width: 768px) {
+    body {
+      background-color: pink !important;
+    }
   }
-  
-  /* rest of your mobile styles */
-}
+</style>
