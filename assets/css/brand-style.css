@@ -1,6 +1,6 @@
 /* Navigation Layout */
 .navbar {
-  background-color: #ede6f3; /* Light purple */
+  background-color: #ede6f3;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,11 +9,19 @@
   position: relative;
 }
 
-.navbar-logo {
-  flex: 0 0 auto; /* Logo stays to the left */
+.navbar-logo-left {
+  flex: 0 0 auto;
 }
 
-.navbar-logo img {
+.navbar-logo-left img {
+  height: 50px;
+}
+
+.navbar-logo-right {
+  flex: 0 0 auto;
+}
+
+.navbar-logo-right img {
   height: 50px;
 }
 
@@ -27,7 +35,7 @@
 }
 
 .navbar-links a {
-  color: #5f308f; /* Primary purple text */
+  color: #5f308f;
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
