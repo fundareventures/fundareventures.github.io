@@ -64,19 +64,8 @@
 /* Mobile Optimization for Hero Banner */
 @media (max-width: 768px) {
   body {
-    background-color: pink;
+    background-color: pink !important; /* Add !important to override inline styles */
   }
   
-  .hero-banner {
-    height: 40vh;
-  }
-
-  .hero-title {
-    font-size: 28px;
-  }
-
-  .hero-subtitle {
-    font-size: 16px;
-  }
+  /* rest of your mobile styles */
 }
-
