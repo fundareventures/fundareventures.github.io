@@ -1,7 +1,7 @@
 .hero-banner {
   position: relative;
   height: 70vh;
-  background-image: url('/assets/img/plant-coin.jpg');
+  background-image: url('../img/plant-coin.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
