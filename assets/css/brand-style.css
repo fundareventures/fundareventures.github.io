@@ -55,19 +55,26 @@
 
 /* Coach J Theme */
 .coachj-bg {
-  background-color: #ede6f3; /* Lightened version of primary purple */
+  background-color: #f0f2f5; /* Universal background */
 }
 .coachj-highlight {
-  color: #5f308f;
+  color: #5f308f; /* Dark Purple text */
+}
+.coachj-accent {
+  color: #1c2d40; /* Navy accent */
 }
 
 /* Prospera Theme */
 .prospera-bg {
-  background-color: #ede6f3; /* Lightened version of primary purple */
+  background-color: #f0f2f5; /* Universal background */
 }
 .prospera-highlight {
-  color: #1c2d40;
+  color: #1c2d40; /* Navy text */
 }
+.prospera-accent {
+  color: #ede6f3; /* Light Purple accent */
+}
+
 
 /* Footer */
 footer {
