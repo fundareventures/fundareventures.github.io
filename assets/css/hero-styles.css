@@ -64,14 +64,13 @@
 /* Mobile-specific image */
 @media (max-width: 768px) {
   .hero-banner {
-    height: 40vh; /* Reduce height on mobile */
+    height: 40vh; /* Shorter height on mobile */
+    background-image: url('../img/plant-coin-mobile.jpg'); /* Mobile-specific image */
   }
-  
   .hero-title {
-    font-size: 36px; /* Smaller font on mobile */
+    font-size: 32px;
   }
-  
   .hero-subtitle {
-    font-size: 18px; /* Smaller font on mobile */
+    font-size: 20px;
   }
 }
