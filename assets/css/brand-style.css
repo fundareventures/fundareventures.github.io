@@ -1,6 +1,6 @@
 /* Navigation Layout */
 .navbar {
-  background-color: #ede6f3;
+  background-color: #e1b77d;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -35,7 +35,7 @@
 }
 
 .navbar-links a {
-  color: #5f308f;
+  color: #1c2d40;
   text-decoration: none;
   font-weight: 600;
   font-size: 18px;
@@ -66,20 +66,20 @@
   background-color: #ede6f3; /* Lightened version of primary purple */
 }
 .prospera-highlight {
-  color: #5f308f;
+  color: #1c2d40;
 }
 
 /* Footer */
 footer {
-  background-color: #ede6f3; /* Light purple background */
+  background-color: #e1b77d; /* soft gold buttons for both brands */
   padding: 20px;
   text-align: center;
   font-size: 14px;
-  color: #5f308f; /* Primary purple footer text */
+  color: #1c2d40; /* Navy footer text */
 }
 
 footer a {
-  color: #5f308f; /* Email link color */
+  color: #1c2d40; /* Email link color */
   text-decoration: none;
 }
 footer a:hover {
