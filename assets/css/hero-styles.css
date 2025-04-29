@@ -60,32 +60,16 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   max-height: 400px;
 }
-/* Mobile Optimization for Hero Banner */
+/* Mobile-specific image */
 @media (max-width: 768px) {
   .hero-banner {
     height: 40vh; /* Shorter height on mobile */
+    background-image: url('../img/plant-coin-mobile.jpg'); /* Mobile-specific image */
   }
-
   .hero-title {
-    font-size: 32px; /* Smaller font size for the title */
+    font-size: 32px;
   }
-
   .hero-subtitle {
-    font-size: 20px; /* Smaller font size for subtitle */
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 480px) {
-  .hero-banner {
-    height: 30vh; /* Even shorter on very small screens */
-  }
-
-  .hero-title {
-    font-size: 28px;
-  }
-
-  .hero-subtitle {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
