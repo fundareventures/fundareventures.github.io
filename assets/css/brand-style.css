@@ -50,7 +50,7 @@
   text-decoration: none;
   display: inline-block;
   font-weight: bold;
-  background-color: #93b0e0; /* Light blue buttons for both brands */
+  background-color: #e1b77d; /* soft gold buttons for both brands */
 }
 
 /* Coach J Theme */
@@ -88,7 +88,7 @@ footer a:hover {
 
 /* Button Hover Effects */
 .btn:hover {
-  background-color: #7ea3d2; /* Slightly darker light blue for hover */
+  background-color: #fec365; /* Slightly darker soft gold for hover */
   transition: background-color 0.3s ease;
 }
 
