@@ -60,11 +60,18 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   max-height: 400px;
 }
+
 /* Mobile-specific image */
 @media (max-width: 768px) {
   .hero-banner {
-    height: 40vh;
-    background-position: left center; /* Focus on the plant part of the image */
+    height: 40vh; /* Reduce height on mobile */
   }
-  /* other styles... */
+  
+  .hero-title {
+    font-size: 36px; /* Smaller font on mobile */
+  }
+  
+  .hero-subtitle {
+    font-size: 18px; /* Smaller font on mobile */
+  }
 }
