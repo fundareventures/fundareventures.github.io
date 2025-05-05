@@ -60,3 +60,19 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   max-height: 400px;
 }
+
+
+
+/* Mobile-specific image */
+@media (max-width: 768px) {
+  .hero-banner {
+    height: 40vh; /* Shorter height on mobile */
+    background-image: url('../img/plant-coin-mobile.jpg'); /* Mobile-specific image */
+  }
+  .hero-title {
+    font-size: 32px;
+  }
+  .hero-subtitle {
+    font-size: 20px;
+  }
+}
