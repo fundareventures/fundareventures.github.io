@@ -1,44 +1,52 @@
 /* Navigation Layout */
+/* Add this to your brand-style.css file */
 .navbar {
-  background-color: #ede6f3; /* light purple */
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 12px 30px;
-  flex-wrap: wrap;
-  position: relative;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.navbar-logo-left {
-  flex: 0 0 auto;
+.navbar-logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
 }
 
-.navbar-logo-left img {
-  height: 50px;
-}
-
-.navbar-logo-right {
-  flex: 0 0 auto;
-}
-
-.navbar-logo-right img {
-  height: 50px;
+.navbar-logo, .navbar-logo-left {
+  text-align: center;
 }
 
 .navbar-links {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
-  gap: 30px;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .navbar-links a {
-  color: #1c2d40; /* navy */
+  color: #1c2d40;
   text-decoration: none;
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 500;
+  padding: 5px 0;
+}
+
+.navbar-links a:hover {
+  color: #5f308f;
+}
+
+/* Media query for larger screens */
+@media (min-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+  
+  .navbar-logo-container {
+    margin-bottom: 15px;
+  }
 }
 
 
