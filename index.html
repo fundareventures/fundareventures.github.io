@@ -395,191 +395,182 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, setPersistence, inMemoryPersistence } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        let db, auth;
+        document.addEventListener('DOMContentLoaded', () => {
+            let db, auth;
 
-        // --- UI ELEMENTS ---
-        const appContainer = document.getElementById('app-container');
-        const adminPanel = document.getElementById('admin-panel');
-        const passwordModal = document.getElementById('password-modal');
-        const passwordInput = document.getElementById('password-input');
-        const passwordError = document.getElementById('password-error');
-        const appHeader = document.getElementById('app-header');
-        const appFooter = document.getElementById('app-footer');
-        const leadCaptureModal = document.getElementById('lead-capture-modal');
-        const leadCaptureForm = document.getElementById('lead-capture-form');
-        const leadModalTitle = document.getElementById('lead-modal-title');
-        
-        // --- INITIALIZATION ---
-        async function initializeFirebase() {
-            if (!firebaseConfig) {
-                console.error("Firebase config is not available.");
-                // Handle UI for error state
-                return;
-            }
-            try {
-                const app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-                setLogLevel('error'); 
-
-                await setPersistence(auth, inMemoryPersistence);
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                
-                setupEventListeners();
-                setupLeadListener();
-            } catch (error) {
-                console.error("Firebase initialization failed:", error);
-            }
-        }
-
-        // --- DATA HANDLING ---
-        async function addLead(name, email, resourceTitle) {
-            if (!db) return;
-            const leadsCollection = collection(db, `/artifacts/${appId}/public/data/leads`);
-            try {
-                await addDoc(leadsCollection, { name, email, resourceTitle, timestamp: serverTimestamp() });
-            } catch (error) {
-                console.error("Error adding lead: ", error);
-            }
-        }
-
-        function setupLeadListener() {
-            if (!db) return;
-            const leadsCollection = collection(db, `/artifacts/${appId}/public/data/leads`);
-            onSnapshot(leadsCollection, (snapshot) => {
-                const leads = [];
-                snapshot.forEach((doc) => {
-                    leads.push({ id: doc.id, ...doc.data() });
-                });
-                renderAdminLeads(leads);
-            }, (error) => {
-                console.error("Error fetching leads:", error);
-            });
-        }
-
-
-        // --- UI RENDERING ---
-        function renderAdminLeads(leads) {
-            const listElement = document.getElementById('admin-leads-list');
-            if (leads.length === 0) {
-                listElement.innerHTML = '<p class="text-gray-500 text-center">No leads collected yet.</p>';
-                return;
-            }
-            listElement.innerHTML = leads.sort((a,b) => b.timestamp - a.timestamp).map(lead => `
-                <div class="bg-gray-700 p-3 rounded-md flex justify-between items-center">
-                    <div>
-                        <p class="font-semibold text-white">${lead.name} - ${lead.email}</p>
-                        <p class="text-sm text-gray-400">Downloaded: ${lead.resourceTitle}</p>
-                    </div>
-                    <p class="text-xs text-gray-500">${lead.timestamp ? new Date(lead.timestamp.seconds * 1000).toLocaleString() : ''}</p>
-                </div>
-            `).join('');
-        }
-
-        // --- PAGE ROUTING & DYNAMIC STYLING ---
-        function navigate() {
-            const pageId = window.location.hash.substring(1) || 'fundare';
+            // --- UI ELEMENTS ---
+            const appContainer = document.getElementById('app-container');
+            const adminPanel = document.getElementById('admin-panel');
+            const passwordModal = document.getElementById('password-modal');
+            const passwordInput = document.getElementById('password-input');
+            const passwordError = document.getElementById('password-error');
+            const appHeader = document.getElementById('app-header');
+            const appFooter = document.getElementById('app-footer');
+            const leadCaptureModal = document.getElementById('lead-capture-modal');
+            const leadCaptureForm = document.getElementById('lead-capture-form');
+            const leadModalTitle = document.getElementById('lead-modal-title');
             
-            document.querySelectorAll('.page-content').forEach(page => {
-                page.classList.add('hidden');
-            });
-            
-            const newPage = document.getElementById(`page-${pageId}`);
-            if (newPage) {
-                newPage.classList.remove('hidden');
-            } else {
-                document.getElementById('page-fundare').classList.remove('hidden');
-            }
-
-            document.querySelectorAll('#nav-links a').forEach(link => {
-                link.classList.toggle('nav-active', link.getAttribute('href') === `#${pageId}`);
-            });
-
-            appHeader.className = 'sticky top-0 z-40 transition-colors duration-300';
-            appFooter.className = 'py-6 transition-colors duration-300';
-
-            if (pageId === 'prospera') {
-                appHeader.classList.add('bg-prospera-teal-dark');
-                appFooter.classList.add('bg-prospera-teal-dark');
-            } else if (pageId === 'coachj') {
-                appHeader.classList.add('bg-coachj-purple-dark');
-                appFooter.classList.add('bg-coachj-purple-dark');
-            } else {
-                appHeader.classList.add('bg-fundare-forest', 'bg-opacity-80', 'backdrop-blur-sm');
-                appFooter.classList.add('bg-fundare-forest');
-            }
-
-            window.scrollTo(0, 0);
-        }
-
-        // --- EVENT LISTENERS ---
-        function setupEventListeners() {
-            window.addEventListener('hashchange', navigate);
-
-            // Admin Panel
-            document.getElementById('admin-link').addEventListener('click', () => passwordModal.classList.remove('hidden'));
-            document.getElementById('password-cancel').addEventListener('click', () => passwordModal.classList.add('hidden'));
-            document.getElementById('password-submit').addEventListener('click', () => {
-                if (passwordInput.value === adminPassword) {
-                    passwordModal.classList.add('hidden');
-                    appContainer.classList.add('hidden');
-                    adminPanel.classList.remove('hidden');
-                    passwordInput.value = '';
-                } else {
-                    passwordError.classList.remove('hidden');
+            // --- INITIALIZATION ---
+            async function initializeFirebase() {
+                if (!firebaseConfig) {
+                    console.error("Firebase config is not available.");
+                    return;
                 }
-            });
-            document.getElementById('close-admin-panel').addEventListener('click', () => {
-                adminPanel.classList.add('hidden');
-                appContainer.classList.remove('hidden');
-            });
+                try {
+                    const app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+                    setLogLevel('error'); 
 
-            // Lead Capture
-            document.querySelectorAll('.download-btn').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const pdfUrl = e.target.dataset.pdfUrl;
-                    const pdfTitle = e.target.dataset.pdfTitle;
-                    leadModalTitle.textContent = `Get: ${pdfTitle}`;
-                    leadCaptureForm.dataset.pdfUrl = pdfUrl;
-                    leadCaptureForm.dataset.pdfTitle = pdfTitle;
-                    leadCaptureModal.classList.remove('hidden');
-                });
-            });
-
-            document.getElementById('lead-cancel-button').addEventListener('click', () => {
-                leadCaptureModal.classList.add('hidden');
-                leadCaptureForm.reset();
-            });
-
-            leadCaptureForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const name = document.getElementById('lead-name').value;
-                const email = document.getElementById('lead-email').value;
-                const resourceTitle = e.target.dataset.pdfTitle;
-                const pdfUrl = e.target.dataset.pdfUrl;
-
-                addLead(name, email, resourceTitle).then(() => {
-                    const link = document.createElement('a');
-                    link.href = pdfUrl;
-                    link.download = `${resourceTitle.replace(/ /g, '_')}.pdf`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                    await setPersistence(auth, inMemoryPersistence);
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
                     
+                    setupLeadListener();
+                } catch (error) {
+                    console.error("Firebase initialization failed:", error);
+                }
+            }
+
+            // --- DATA HANDLING ---
+            async function addLead(name, email, resourceTitle) {
+                if (!db) return;
+                const leadsCollection = collection(db, `/artifacts/${appId}/public/data/leads`);
+                try {
+                    await addDoc(leadsCollection, { name, email, resourceTitle, timestamp: serverTimestamp() });
+                } catch (error) {
+                    console.error("Error adding lead: ", error);
+                }
+            }
+
+            function setupLeadListener() {
+                if (!db) return;
+                const leadsCollection = collection(db, `/artifacts/${appId}/public/data/leads`);
+                onSnapshot(leadsCollection, (snapshot) => {
+                    const leads = [];
+                    snapshot.forEach((doc) => {
+                        leads.push({ id: doc.id, ...doc.data() });
+                    });
+                    renderAdminLeads(leads);
+                }, (error) => {
+                    console.error("Error fetching leads:", error);
+                });
+            }
+
+            // --- UI RENDERING ---
+            function renderAdminLeads(leads) {
+                const listElement = document.getElementById('admin-leads-list');
+                if (!listElement) return;
+                if (leads.length === 0) {
+                    listElement.innerHTML = '<p class="text-gray-500 text-center">No leads collected yet.</p>';
+                    return;
+                }
+                listElement.innerHTML = leads.sort((a,b) => b.timestamp.seconds - a.timestamp.seconds).map(lead => `
+                    <div class="bg-gray-700 p-3 rounded-md flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-white">${lead.name} - ${lead.email}</p>
+                            <p class="text-sm text-gray-400">Downloaded: ${lead.resourceTitle}</p>
+                        </div>
+                        <p class="text-xs text-gray-500">${lead.timestamp ? new Date(lead.timestamp.seconds * 1000).toLocaleString() : ''}</p>
+                    </div>
+                `).join('');
+            }
+
+            // --- PAGE ROUTING & DYNAMIC STYLING ---
+            function navigate() {
+                const pageId = window.location.hash.substring(1) || 'fundare';
+                
+                document.querySelectorAll('.page-content').forEach(page => {
+                    page.classList.toggle('hidden', page.id !== `page-${pageId}`);
+                });
+
+                document.querySelectorAll('#nav-links a').forEach(link => {
+                    link.classList.toggle('nav-active', link.getAttribute('href') === `#${pageId}`);
+                });
+
+                appHeader.className = 'sticky top-0 z-40 transition-colors duration-300';
+                appFooter.className = 'py-6 transition-colors duration-300';
+
+                if (pageId === 'prospera') {
+                    appHeader.classList.add('bg-prospera-teal-dark');
+                    appFooter.classList.add('bg-prospera-teal-dark');
+                } else if (pageId === 'coachj') {
+                    appHeader.classList.add('bg-coachj-purple-dark');
+                    appFooter.classList.add('bg-coachj-purple-dark');
+                } else {
+                    appHeader.classList.add('bg-fundare-forest', 'bg-opacity-80', 'backdrop-blur-sm');
+                    appFooter.classList.add('bg-fundare-forest');
+                }
+
+                window.scrollTo(0, 0);
+            }
+
+            // --- EVENT LISTENERS ---
+            function setupEventListeners() {
+                window.addEventListener('hashchange', navigate);
+
+                document.getElementById('admin-link').addEventListener('click', () => passwordModal.classList.remove('hidden'));
+                document.getElementById('password-cancel').addEventListener('click', () => passwordModal.classList.add('hidden'));
+                document.getElementById('password-submit').addEventListener('click', () => {
+                    if (passwordInput.value === adminPassword) {
+                        passwordModal.classList.add('hidden');
+                        appContainer.classList.remove('hidden');
+                        adminPanel.classList.remove('hidden');
+                        passwordInput.value = '';
+                    } else {
+                        passwordError.classList.remove('hidden');
+                    }
+                });
+                document.getElementById('close-admin-panel').addEventListener('click', () => {
+                    adminPanel.classList.add('hidden');
+                    appContainer.classList.remove('hidden');
+                });
+
+                document.querySelectorAll('.download-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const pdfUrl = e.target.dataset.pdfUrl;
+                        const pdfTitle = e.target.dataset.pdfTitle;
+                        leadModalTitle.textContent = `Get: ${pdfTitle}`;
+                        leadCaptureForm.dataset.pdfUrl = pdfUrl;
+                        leadCaptureForm.dataset.pdfTitle = pdfTitle;
+                        leadCaptureModal.classList.remove('hidden');
+                    });
+                });
+
+                document.getElementById('lead-cancel-button').addEventListener('click', () => {
                     leadCaptureModal.classList.add('hidden');
                     leadCaptureForm.reset();
                 });
-            });
-        }
 
-        // --- START THE APP ---
-        initializeFirebase();
-        navigate();
+                leadCaptureForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('lead-name').value;
+                    const email = document.getElementById('lead-email').value;
+                    const resourceTitle = e.target.dataset.pdfTitle;
+                    const pdfUrl = e.target.dataset.pdfUrl;
 
+                    addLead(name, email, resourceTitle).then(() => {
+                        const link = document.createElement('a');
+                        link.href = pdfUrl;
+                        link.download = `${resourceTitle.replace(/ /g, '_')}.pdf`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        leadCaptureModal.classList.add('hidden');
+                        leadCaptureForm.reset();
+                    });
+                });
+            }
+            
+            // --- START THE APP ---
+            initializeFirebase();
+            setupEventListeners();
+            navigate();
+        });
     </script>
 </body>
 </html>
