@@ -112,15 +112,19 @@
         <!-- Header & Navigation -->
         <header id="app-header" class="sticky top-0 z-40 transition-colors duration-300">
             <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#fundare" class="font-display text-2xl font-bold text-fundare-light-grey">Fundare Ventures</a>
+                <div class="flex-1">
+                    <a href="#fundare" class="font-display text-2xl font-bold text-fundare-light-grey">Fundare Ventures</a>
+                </div>
                 <div class="hidden md:flex items-center space-x-8" id="nav-links">
                     <a href="#prospera" class="text-fundare-light-grey hover:text-prospera-seafoam transition-colors">Prospera Solutions</a>
                     <a href="#coachj" class="text-fundare-light-grey hover:text-coachj-seafoam transition-colors">Coach J</a>
                     <a href="#resources" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Resources</a>
                 </div>
-                <button id="admin-link" class="border border-coachj-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest px-4 py-2 rounded-md transition-colors text-sm font-semibold">
-                    Admin
-                </button>
+                <div class="flex-1 flex justify-end">
+                    <button id="admin-link" class="border border-coachj-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest px-4 py-2 rounded-md transition-colors text-sm font-semibold">
+                        Admin
+                    </button>
+                </div>
             </nav>
         </header>
 
@@ -318,7 +322,15 @@
                              <h2 class="text-5xl md:text-6xl font-display text-fundare-seafoam">Get in the Game</h2>
                              <p class="text-lg text-fundare-light-grey mt-2">Download your free guides below.</p>
                         </div>
-                        <div id="resources-list" class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div id="resources-list" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                            <!-- Resource: Scouting Report -->
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+                                <h3 class="font-display text-2xl text-white mb-2">The Financial Scouting Report</h3>
+                                <p class="text-fundare-light-grey mb-4 flex-grow">A fillable workbook to get a clear snapshot of your current financial health—the most important first step.</p>
+                                <a href="scouting-report.html" target="_blank" class="mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors">
+                                    Open Tool
+                                </a>
+                            </div>
                             <!-- Resource 1 -->
                             <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
                                 <h3 class="font-display text-2xl text-white mb-2">Essential Debt & Investment Resources</h3>

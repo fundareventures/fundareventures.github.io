@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Scouting Report - Fundare Ventures</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+        .value-btn {
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .value-selected {
+            background-color: #95bea4 !important;
+            color: #3e4e3a !important;
+            border-color: #95bea4 !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <div class="text-center mb-12">
+            <h1 class="font-display text-4xl md:text-5xl text-fundare-seafoam mb-2" style="color: #95bea4;">The Financial Scouting Report</h1>
+            <p class="text-lg text-fundare-light-grey" style="color: #c5c3c6;">Your Personal Game Plan Starts Here</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-8">
+            <!-- Part 1: Net Worth -->
+            <div class="bg-gray-800 p-6 rounded-lg">
+                <h2 class="font-display text-2xl text-white mb-4">Part 1: Your Net Worth (Your Current Score)</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Assets -->
+                    <div>
+                        <h3 class="text-xl font-bold text-green-400 mb-3">Assets (What You Own)</h3>
+                        <div class="space-y-2" id="assets-inputs">
+                            <div class="flex justify-between items-center">
+                                <label for="cash">Cash (Checking, Savings)</label>
+                                <input type="number" id="cash" class="calc-input asset bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="retirement">Retirement Accounts (401k, IRA)</label>
+                                <input type="number" id="retirement" class="calc-input asset bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="investments">Investment Accounts</label>
+                                <input type="number" id="investments" class="calc-input asset bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="home-value">Home (Estimated Value)</label>
+                                <input type="number" id="home-value" class="calc-input asset bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="vehicles">Vehicles (Estimated Value)</label>
+                                <input type="number" id="vehicles" class="calc-input asset bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="valuables">Other Valuables</label>
+                                <input type="number" id="valuables" class="calc-input asset bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-600 mt-3 pt-3 flex justify-between items-center font-bold text-lg">
+                            <span>Total Assets (A)</span>
+                            <span id="total-assets" class="text-green-400">$0.00</span>
+                        </div>
+                    </div>
+                    <!-- Liabilities -->
+                    <div>
+                        <h3 class="text-xl font-bold text-red-400 mb-3">Liabilities (What You Owe)</h3>
+                        <div class="space-y-2" id="liabilities-inputs">
+                            <div class="flex justify-between items-center">
+                                <label for="mortgage">Mortgage Balance</label>
+                                <input type="number" id="mortgage" class="calc-input liability bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="student-loans">Student Loan Debt</label>
+                                <input type="number" id="student-loans" class="calc-input liability bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="auto-loans">Auto Loans</label>
+                                <input type="number" id="auto-loans" class="calc-input liability bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="credit-card">Credit Card Debt</label>
+                                <input type="number" id="credit-card" class="calc-input liability bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <label for="personal-loans">Personal Loans / Other</label>
+                                <input type="number" id="personal-loans" class="calc-input liability bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-600 mt-3 pt-3 flex justify-between items-center font-bold text-lg">
+                            <span>Total Liabilities (B)</span>
+                            <span id="total-liabilities" class="text-red-400">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-900 mt-6 p-4 rounded-lg text-center">
+                    <span class="text-xl font-bold">Your Net Worth (A - B) = </span>
+                    <span id="net-worth" class="text-2xl font-bold text-fundare-seafoam" style="color: #95bea4;">$0.00</span>
+                </div>
+            </div>
+
+            <!-- Part 2: Savings Rate -->
+            <div class="bg-gray-800 p-6 rounded-lg">
+                 <h2 class="font-display text-2xl text-white mb-4">Part 2: Your Savings Rate (Your Offensive Power)</h2>
+                 <div class="space-y-2" id="savings-inputs">
+                    <div class="flex justify-between items-center">
+                        <label for="take-home">Take-Home Pay (Monthly, After Taxes)</label>
+                        <input type="number" id="take-home" class="calc-input bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                    </div>
+                     <div class="flex justify-between items-center">
+                        <label for="retirement-contrib">Retirement Contributions (401k, IRA)</label>
+                        <input type="number" id="retirement-contrib" class="calc-input savings bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                    </div>
+                     <div class="flex justify-between items-center">
+                        <label for="other-savings">Other Savings & Investments</label>
+                        <input type="number" id="other-savings" class="calc-input savings bg-gray-700 rounded p-1 w-32 text-right" placeholder="0.00">
+                    </div>
+                 </div>
+                 <div class="bg-gray-900 mt-6 p-4 rounded-lg text-center">
+                    <span class="text-xl font-bold">Your Savings Rate = </span>
+                    <span id="savings-rate" class="text-2xl font-bold text-fundare-seafoam" style="color: #95bea4;">0.0%</span>
+                </div>
+            </div>
+
+            <!-- Part 3: Spending Audit -->
+            <div class="bg-gray-800 p-6 rounded-lg">
+                <h2 class="font-display text-2xl text-white mb-4">Part 3: The Spending Audit (Reviewing the Game Tape)</h2>
+                <div class="grid md:grid-cols-2 gap-x-8 gap-y-4" id="spending-inputs">
+                    <!-- Column 1 -->
+                    <div class="space-y-2">
+                        <h3 class="text-lg font-semibold text-fundare-seafoam/80" style="color: #95bea4;">Housing & Utilities</h3>
+                        <div class="flex justify-between items-center"><label>Mortgage/Rent</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Property Tax</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Electricity</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Gas/Oil</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Water/Sewer</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Internet/Cable</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        
+                        <h3 class="text-lg font-semibold text-fundare-seafoam/80 pt-4" style="color: #95bea4;">Food</h3>
+                        <div class="flex justify-between items-center"><label>Groceries</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Restaurants/Takeout</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                    </div>
+                    <!-- Column 2 -->
+                    <div class="space-y-2">
+                        <h3 class="text-lg font-semibold text-fundare-seafoam/80" style="color: #95bea4;">Transportation</h3>
+                        <div class="flex justify-between items-center"><label>Gas/Fuel</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Car Insurance</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Maintenance/Repairs</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        
+                        <h3 class="text-lg font-semibold text-fundare-seafoam/80 pt-4" style="color: #95bea4;">Personal & Family</h3>
+                        <div class="flex justify-between items-center"><label>Cell Phone</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Health Insurance</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Clothing</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Subscriptions</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Childcare/Education</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                        <div class="flex justify-between items-center"><label>Entertainment</label><input type="number" class="calc-input expense bg-gray-700 rounded p-1 w-28 text-right" placeholder="0.00"></div>
+                    </div>
+                </div>
+                 <div class="bg-gray-900 mt-6 p-4 rounded-lg text-center">
+                    <span class="text-xl font-bold">Total Monthly Spending = </span>
+                    <span id="total-spending" class="text-2xl font-bold text-fundare-seafoam" style="color: #95bea4;">$0.00</span>
+                </div>
+            </div>
+
+            <!-- Part 4: Your Values -->
+            <div class="bg-gray-800 p-6 rounded-lg">
+                <h2 class="font-display text-2xl text-white mb-4">Part 4: Your Values (Defining Your "Why")</h2>
+                <p class="text-fundare-light-grey mb-4" style="color: #c5c3c6;">Money is just a tool. What do you want it to *do* for you? Select your top 3-5 values.</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-center">
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Freedom</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Security</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Family</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Adventure</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Generosity</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Stability</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Experience</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Simplicity</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Growth</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Spontaneity</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Community</button>
+                    <button type="button" class="value-btn p-2 border border-gray-600 rounded">Legacy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const inputs = document.querySelectorAll('.calc-input');
+            const valueButtons = document.querySelectorAll('.value-btn');
+
+            function updateTotals() {
+                // Net Worth Calculation
+                const assets = Array.from(document.querySelectorAll('.asset')).reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+                const liabilities = Array.from(document.querySelectorAll('.liability')).reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+                const netWorth = assets - liabilities;
+
+                document.getElementById('total-assets').textContent = assets.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                document.getElementById('total-liabilities').textContent = liabilities.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                document.getElementById('net-worth').textContent = netWorth.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+
+                // Savings Rate Calculation
+                const takeHomePay = parseFloat(document.getElementById('take-home').value) || 0;
+                const totalSavings = Array.from(document.querySelectorAll('.savings')).reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+                const savingsRate = takeHomePay > 0 ? (totalSavings / takeHomePay) * 100 : 0;
+                
+                document.getElementById('savings-rate').textContent = `${savingsRate.toFixed(1)}%`;
+
+                // Spending Audit Calculation
+                const totalSpending = Array.from(document.querySelectorAll('.expense')).reduce((sum, input) => sum + (parseFloat(input.value) || 0), 0);
+                document.getElementById('total-spending').textContent = totalSpending.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+            }
+
+            inputs.forEach(input => {
+                input.addEventListener('input', updateTotals);
+            });
+
+            valueButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const isSelected = button.classList.contains('value-selected');
+                    const selectedCount = document.querySelectorAll('.value-selected').length;
+
+                    if (isSelected) {
+                        button.classList.remove('value-selected');
+                    } else {
+                        if (selectedCount < 5) {
+                            button.classList.add('value-selected');
+                        }
+                    }
+                });
+            });
+
+            // Initial calculation
+            updateTotals();
+        });
+    </script>
+
+</body>
+</html>
