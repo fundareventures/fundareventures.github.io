@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundare Ventures</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Custom styles to apply the fonts */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark background for the body */
+        }
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-forest {
+            background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        .bg-waves {
+            background-image: url('https://images.unsplash.com/photo-1502690823914-c49439c1b53a?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Style for active nav link */
+        .nav-active {
+            color: #95bea4; /* Seafoam */
+            font-weight: 500;
+        }
+
+        /* Custom Color Palette */
+        .bg-fundare-seafoam { background-color: #95bea4; }
+        .bg-fundare-forest { background-color: #3e4e3a; }
+        .text-fundare-seafoam { color: #95bea4; }
+        .text-fundare-forest { color: #3e4e3a; }
+        .text-fundare-light-grey { color: #c5c3c6; }
+        .border-fundare-forest { border-color: #3e4e3a; }
+
+        .bg-prospera-teal { background-color: #005b59; }
+        .bg-prospera-teal-dark { background-color: #004947; }
+        .text-prospera-teal { color: #005b59; }
+        .text-prospera-seafoam { color: #95bea4; }
+        .text-prospera-light-blue { color: #779ca2; }
+        .border-prospera-teal { border-color: #005b59; }
+        .border-prospera-light-blue { border-color: #779ca2; }
+
+        .bg-coachj-purple { background-color: #5f308f; }
+        .bg-coachj-purple-dark { background-color: #4c2772; }
+        .bg-coachj-light-grey { background-color: #c5c3c6; }
+        .text-coachj-purple { color: #5f308f; }
+        .text-coachj-seafoam { color: #95bea4; }
+        .text-coachj-light-grey { color: #c5c3c6; }
+        .border-coachj-purple { border-color: #5f308f; }
+        .border-coachj-seafoam { border-color: #95bea4; }
+        .border-coachj-light-grey { border-color: #c5c3c6; }
+        
+        .hover\:bg-prospera-teal-dark:hover { background-color: #004c4a; }
+        .hover\:bg-coachj-purple-dark:hover { background-color: #4c2772; }
+        .hover\:bg-coachj-purple:hover { background-color: #5f308f; }
+        .hover\:bg-fundare-forest-dark:hover { background-color: #2f3b2c; }
+        .hover\:bg-fundare-seafoam:hover { background-color: #95bea4; }
+        .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
+        .hover\:bg-coachj-light-grey-dark:hover { background-color: #b0aeb2; }
+        .hover\:bg-coachj-light-grey:hover { background-color: #c5c3c6; }
+        .hover\:text-fundare-forest:hover { color: #3e4e3a; }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- Lead Capture Modal -->
+    <div id="lead-capture-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-sm">
+            <h2 id="lead-modal-title" class="font-display text-2xl mb-4 text-center text-white">Get Your Free Guide</h2>
+            <p class="text-gray-400 mb-6 text-center">Enter your name and email to start the download.</p>
+            <form id="lead-capture-form">
+                <input type="text" id="lead-name" placeholder="Your Name" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-fundare-seafoam mb-4" required>
+                <input type="email" id="lead-email" placeholder="Your Email" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-fundare-seafoam" required>
+                <div class="flex justify-between mt-6">
+                    <button type="button" id="lead-cancel-button" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md transition-colors">Cancel</button>
+                    <button type="submit" class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors">Get the Guide</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Admin Password Modal -->
+    <div id="password-modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-xl w-full max-w-sm">
+            <h2 class="font-display text-2xl mb-4 text-center">Admin Access</h2>
+            <p class="text-gray-400 mb-6 text-center">Enter the password to manage resources.</p>
+            <input type="password" id="password-input" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Password">
+            <p id="password-error" class="text-red-500 text-sm mt-2 hidden">Incorrect password. Try again.</p>
+            <div class="flex justify-between mt-6">
+                <button id="password-cancel" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md transition-colors">Cancel</button>
+                <button id="password-submit" class="bg-prospera-teal hover:bg-prospera-teal-dark text-white font-bold py-2 px-4 rounded-md transition-colors">Enter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App Container -->
+    <div id="app-container">
+        <!-- Header & Navigation -->
+        <header id="app-header" class="sticky top-0 z-40 transition-colors duration-300">
+            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#fundare" class="font-display text-2xl font-bold text-fundare-light-grey">Fundare Ventures</a>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8" id="nav-links-desktop">
+                    <a href="#prospera" class="text-fundare-light-grey hover:text-prospera-seafoam transition-colors">Prospera Solutions</a>
+                    <a href="#coachj" class="text-fundare-light-grey hover:text-coachj-seafoam transition-colors">Coach J</a>
+                    <a href="#resources" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Resources</a>
+                </div>
+
+                <!-- Mobile Menu Button & Admin Button -->
+                <div class="flex items-center">
+                    <button id="admin-link-desktop" class="hidden md:block border border-coachj-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest px-4 py-2 rounded-md transition-colors text-sm font-semibold">
+                        Admin
+                    </button>
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-fundare-light-grey">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden">
+                <a href="#prospera" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Prospera Solutions</a>
+                <a href="#coachj" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Coach J</a>
+                <a href="#resources" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Resources</a>
+                <a href="#" id="admin-link-mobile" class="block text-center py-2 px-4 text-sm text-fundare-seafoam hover:bg-fundare-forest-dark">Admin</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- Fundare Page -->
+            <div id="page-fundare" class="page-content bg-fundare-forest">
+                <!-- Hero Section -->
+                <section class="py-40 md:py-48 relative bg-forest flex items-center justify-center">
+                    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+                    <div class="container mx-auto px-6 text-center relative z-10">
+                        <p class="text-2xl md:text-4xl font-display text-fundare-light-grey max-w-5xl mx-auto">
+                            A people-first philosophy, dedicated to helping you build a financial foundation as strong as your ambitions and as meaningful as your goals.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Prospera Solutions Block -->
+                <section class="py-20 bg-prospera-teal">
+                    <div class="container mx-auto px-6">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 class="font-display text-4xl text-prospera-seafoam mb-4">For Your Workplace: Prospera Solutions</h2>
+                                <p class="text-prospera-seafoam mb-6 text-lg">
+                                    Financial stress is the #1 concern for most employees, impacting productivity and retention. Our workplace financial wellness program provides confidential, one-on-one coaching to help your team build confidence, reduce stress, and take control of their financial lives.
+                                </p>
+                                <a href="#prospera" class="bg-coachj-light-grey hover:bg-coachj-light-grey-dark text-prospera-teal font-bold py-3 px-6 rounded-md transition-colors">Learn More for Your Team</a>
+                            </div>
+                            <div class="flex justify-center">
+                                <svg class="w-40 h-40 text-prospera-seafoam" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0zM10 11v5m0-8v.01M14 11v5m0-8v.01"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Coach J Block -->
+                <section class="py-20 bg-coachj-light-grey">
+                    <div class="container mx-auto px-6">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div class="flex justify-center order-1 md:order-1">
+                                <!-- Headshot Placeholder -->
+                                <div class="w-72 h-72 rounded-full bg-coachj-purple/20 flex items-center justify-center border-4 border-coachj-purple">
+                                     <img src="https://raw.githubusercontent.com/fundareventures/fundareventures.github.io/main/Janice%20Chen.jpg" alt="Headshot of Janice Chen" class="rounded-full w-full h-full object-cover">
+                                </div>
+                            </div>
+                            <div class="order-2 md:order-2">
+                                <h2 class="font-display text-4xl text-coachj-purple mb-4">For Individuals: Coach J Financial</h2>
+                                <p class="text-coachj-purple mb-6 text-lg">
+                                    Ready to take control of your financial future? I provide personalized, one-on-one coaching to help you build a plan, develop healthy money habits, and achieve your personal goals—whether that's paying off debt, saving for a home, or investing with confidence.
+                                </p>
+                                <div class="flex flex-wrap gap-4">
+                                    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2eIyrbtajwFAcD4ccHEG6asoQ-zvuudlrb-PoR574olr6Fu264SPmOSxcrQNyv5VBqZbLHavqR" target="_blank" rel="noopener noreferrer" class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-coachj-purple font-bold py-3 px-6 rounded-md transition-colors">Book a Free Call</a>
+                                    <a href="#coachj" class="border border-coachj-purple text-coachj-purple hover:bg-coachj-purple hover:text-white font-bold py-3 px-6 rounded-md transition-colors">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Prospera Solutions Page -->
+            <div id="page-prospera" class="page-content hidden bg-prospera-teal">
+                <!-- Hero Section -->
+                <section class="pt-20 pb-10 md:pt-32 md:pb-16 relative">
+                     <div class="absolute inset-0 bg-waves opacity-10"></div>
+                     <div class="container mx-auto px-6 relative z-10 text-center">
+                         <h2 class="font-display text-5xl md:text-6xl text-prospera-seafoam">Prospera Solutions</h2>
+                         <p class="text-lg text-prospera-light-blue mt-4 max-w-3xl mx-auto">Employees don't leave for a higher paycheck; they leave to solve their financial stress. Partner with us to provide real support that improves retention, morale, and productivity.</p>
+                    </div>
+                </section>
+
+                <!-- Statistics Section -->
+                <section class="py-16 bg-prospera-teal-dark">
+                    <div class="container mx-auto px-6">
+                        <h3 class="text-3xl font-display text-center text-white mb-10">The Hidden Cost of Financial Stress</h3>
+                        <div class="grid md:grid-cols-3 gap-8 text-center">
+                            <div class="p-6">
+                                <p class="font-display text-6xl text-prospera-seafoam">57%</p>
+                                <p class="mt-2 text-prospera-light-blue">of employees say money is their #1 source of stress.</p>
+                            </div>
+                            <div class="p-6">
+                                <p class="font-display text-6xl text-prospera-seafoam">3+ hours</p>
+                                <p class="mt-2 text-prospera-light-blue">are spent weekly by employees distracted by personal finances.</p>
+                            </div>
+                             <div class="p-6">
+                                <p class="font-display text-6xl text-prospera-seafoam">33%</p>
+                                <p class="mt-2 text-prospera-light-blue">of an employee's salary is the average cost to replace them.</p>
+                            </div>
+                        </div>
+                        <p class="text-right text-sm text-prospera-light-blue italic mt-4 pr-6">Source: 2023 PwC Employee Financial Wellness Survey</p>
+                    </div>
+                </section>
+
+                <!-- Program Details Section -->
+                <section class="py-20">
+                    <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="font-display text-4xl text-prospera-seafoam mb-4">A Coaching-First Approach</h3>
+                            <p class="text-prospera-light-blue mb-6">I'm not a financial advisor selling products. I'm a coach focused on behavior, mindset, and practical decisions. I create a confidential, shame-free space for your employees to take control of their money and build the life they want.</p>
+                             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2eIyrbtajwFAcD4ccHEG6asoQ-zvuudlrb-PoR574olr6Fu264SPmOSxcrQNyv5VBqZbLHavqR" target="_blank" rel="noopener noreferrer" class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-coachj-purple font-bold py-3 px-6 rounded-md transition-colors">Schedule a Consultation</a>
+                        </div>
+                        <div class="bg-prospera-teal-dark p-8 rounded-lg">
+                            <h4 class="font-display text-2xl text-white mb-4">Our Program Includes:</h4>
+                            <ul class="space-y-3 text-prospera-light-blue">
+                                <li class="flex items-start"><span class="text-prospera-seafoam mr-3">✔</span> One-on-one confidential coaching via Google Meet.</li>
+                                <li class="flex items-start"><span class="text-prospera-seafoam mr-3">✔</span> Support for budgeting, debt, saving, and investing.</li>
+                                <li class="flex items-start"><span class="text-prospera-seafoam mr-3">✔</span> A behavior-first approach: coaching the "why," not just the "how."</li>
+                                <li class="flex items-start"><span class="text-prospera-seafoam mr-3">✔</span> Culturally sensitive and trauma-aware financial support.</li>
+                                <li class="flex items-start"><span class="text-prospera-seafoam mr-3">✔</span> Tax-deductible benefit under IRS Section 127.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Quote Section -->
+                <section class="py-20 text-center">
+                     <div class="container mx-auto px-6">
+                        <blockquote class="text-3xl italic text-prospera-light-blue border-l-4 border-prospera-seafoam pl-6 max-w-5xl mx-auto">
+                            "An investment in knowledge pays the best interest."
+                            <cite class="block not-italic text-xl text-prospera-seafoam mt-4">- Benjamin Franklin</cite>
+                        </blockquote>
+                     </div>
+                </section>
+
+            </div>
+
+            <!-- Coach J Page -->
+            <div id="page-coachj" class="page-content hidden bg-coachj-purple-dark">
+                 <!-- Hero Section -->
+                <section class="pt-20 pb-10 md:pt-32 md:pb-16 relative">
+                     <div class="container mx-auto px-6 relative z-10 text-center">
+                         <h2 class="text-5xl md:text-6xl font-display text-coachj-seafoam">Coach J Financial</h2>
+                         <p class="text-lg text-coachj-light-grey mt-4 max-w-3xl mx-auto">A great life doesn't happen by accident. It's designed. I'll be your coach, helping you create a sound financial plan that supports your biggest goals, day by day and year by year.</p>
+                    </div>
+                </section>
+
+                <!-- Statistics Section -->
+                <section class="py-16 bg-black/20">
+                    <div class="container mx-auto px-6">
+                        <h3 class="text-3xl font-display text-center text-white mb-10">The Reality of Personal Finance</h3>
+                        <div class="grid md:grid-cols-3 gap-8 text-center">
+                            <div class="p-6">
+                                <p class="font-display text-6xl text-coachj-seafoam">66%</p>
+                                <p class="mt-2 text-coachj-light-grey">of Americans plan to work past the age of 65 because they have to.</p>
+                            </div>
+                            <div class="p-6">
+                                <p class="font-display text-6xl text-coachj-seafoam">38%</p>
+                                <p class="mt-2 text-coachj-light-grey">of households carry credit card debt from month to month.</p>
+                            </div>
+                             <div class="p-6">
+                                <p class="font-display text-6xl text-coachj-seafoam">53%</p>
+                                <p class="mt-2 text-coachj-light-grey">of millennials have more debt than they have in retirement savings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Coaching Areas Section -->
+                <section class="py-20">
+                    <div class="container mx-auto px-6">
+                        <div class="grid md:grid-cols-3 gap-8 text-center">
+                            <!-- Money Playbook -->
+                            <div class="bg-black/20 p-8 rounded-lg">
+                                <h3 class="font-display text-3xl text-coachj-seafoam mb-4">Money Playbook</h3>
+                                <p class="text-coachj-light-grey">Forget rigid monthly budgets. We build a flexible plan around your actual pay schedule, giving you a clear forecast of your financial future and control over every dollar.</p>
+                            </div>
+                            <!-- The Drills -->
+                            <div class="bg-black/20 p-8 rounded-lg">
+                                <h3 class="font-display text-3xl text-coachj-seafoam mb-4">The Drills</h3>
+                                <p class="text-coachj-light-grey">We automate your savings and debt payments to free up your mental energy. Instead of tracking every dollar, we create a simple spending allowance for variable costs, giving you financial freedom without the friction.</p>
+                            </div>
+                            <!-- Game-Winning Plays -->
+                             <div class="bg-black/20 p-8 rounded-lg">
+                                <h3 class="font-display text-3xl text-coachj-seafoam mb-4">Game-Winning Plays</h3>
+                                <p class="text-coachj-light-grey">I'll educate you on key topics like investing, negotiating your salary, and making smart money moves so you can seize opportunities with confidence.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                 <!-- CTA Section -->
+                <section class="py-20 text-center">
+                     <div class="container mx-auto px-6">
+                        <h3 class="font-display text-4xl text-white mb-4">Ready to Make Your Pivot?</h3>
+                        <p class="text-coachj-light-grey max-w-2xl mx-auto mb-8">Stop guessing and start building. Your first consultation is free. Let's talk about what's possible when you have a coach in your corner.</p>
+                        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2eIyrbtajwFAcD4ccHEG6asoQ-zvuudlrb-PoR574olr6Fu264SPmOSxcrQNyv5VBqZbLHavqR" target="_blank" rel="noopener noreferrer" class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-coachj-purple font-bold py-4 px-8 rounded-md transition-colors text-lg">Book Your Free Call</a>
+                     </div>
+                </section>
+            </div>
+
+            <!-- Resources Page -->
+            <div id="page-resources" class="page-content hidden bg-fundare-forest">
+                <section class="py-20 md:py-32">
+                    <div class="container mx-auto px-6">
+                        <div class="text-center mb-12">
+                             <h2 class="text-5xl md:text-6xl font-display text-fundare-seafoam">Get in the Game</h2>
+                             <p class="text-lg text-fundare-light-grey mt-2">Download your free guides below.</p>
+                        </div>
+                        <div id="resources-list" class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                            <!-- Resource: Scouting Report -->
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+                                <h3 class="font-display text-2xl text-white mb-2">The Financial Scouting Report</h3>
+                                <p class="text-fundare-light-grey mb-4 flex-grow">An interactive tool to get a clear snapshot of your current financial health—the most important first step.</p>
+                                <a href="scouting-report.html" target="_blank" class="mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors">
+                                    Open Tool
+                                </a>
+                            </div>
+                             <!-- Resource: Debt Calculator -->
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+                                <h3 class="font-display text-2xl text-white mb-2">The "Full-Court Press" Debt Calculator</h3>
+                                <p class="text-fundare-light-grey mb-4 flex-grow">An interactive tool to create a personalized debt payoff plan using the Snowball, Avalanche, or a custom method.</p>
+                                <a href="debt-calculator.html" target="_blank" class="mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors">
+                                    Open Tool
+                                </a>
+                            </div>
+                            <!-- Resource 1 -->
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+                                <h3 class="font-display text-2xl text-white mb-2">Essential Debt & Investment Resources</h3>
+                                <p class="text-fundare-light-grey mb-4 flex-grow">The perfect starting point. A curated list of the best tools, books, and podcasts to begin your journey of paying off debt and building wealth.</p>
+                                <button class="download-btn mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors" data-pdf-url="https://drive.google.com/file/d/1fcMZrdJZuW9oCgPR3ncYm4RKoAZ8999M/view?usp=drive_link" data-pdf-title="Essential Debt & Investment Resources">
+                                    Download Guide
+                                </button>
+                            </div>
+                            <!-- Resource 2 -->
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+                                <h3 class="font-display text-2xl text-white mb-2">Investment Strategies</h3>
+                                <p class="text-fundare-light-grey mb-4 flex-grow">Ready to go beyond the basics? This guide explores multiple proven investment approaches to find what resonates with your goals.</p>
+                                <button class="download-btn mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors" data-pdf-url="https://drive.google.com/file/d/1LdDls_HfMW5NQlIUcfPrDpme_7KVeeQs/view?usp=drive_link" data-pdf-title="Investment Strategies">
+                                    Download Guide
+                                </button>
+                            </div>
+                             <!-- Resource 3: Negotiation Guide -->
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+                                <h3 class="font-display text-2xl text-white mb-2">Negotiation Drills Playbook</h3>
+                                <p class="text-fundare-light-grey mb-4 flex-grow">Actionable scripts and strategies to help you confidently negotiate your salary and lower your monthly bills.</p>
+                                <button class="download-btn mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors" data-pdf-url="https://drive.google.com/file/d/1JPHRdubvTq62OMlCGpk8O84mhsE_MLt_/view?usp=drive_link" data-pdf-title="Negotiation Drills Playbook">
+                                    Download Guide
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer id="app-footer" class="bg-fundare-forest py-6 transition-colors duration-300">
+            <div class="container mx-auto px-6 text-center text-fundare-light-grey">
+                &copy; 2024 Fundare Ventures. All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Admin Panel (Hidden by default) -->
+    <div id="admin-panel" class="hidden min-h-screen bg-gray-900 p-4 sm:p-6 md:p-8">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex justify-between items-center mb-8">
+                <h1 class="font-display text-4xl text-white">Admin Dashboard</h1>
+                <button id="close-admin-panel" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md transition-colors">Close</button>
+            </div>
+
+            <!-- Manage Freebies -->
+            <div class="bg-gray-800 p-6 rounded-lg mb-8">
+                <h2 class="font-display text-2xl mb-4">Manage Downloadable Resources</h2>
+                <form id="add-freebie-form" class="space-y-4">
+                    <input type="text" id="freebie-title" placeholder="Resource Title" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    <textarea id="freebie-description" placeholder="Short Description" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" rows="3" required></textarea>
+                    <input type="url" id="freebie-url" placeholder="Download URL (e.g., Google Drive, Dropbox link)" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" required>
+                    <button type="submit" class="w-full bg-prospera-teal hover:bg-prospera-teal-dark text-white font-bold py-3 px-4 rounded-md transition-colors">Add Resource</button>
+                </form>
+                 <div class="mt-6">
+                    <h3 class="font-display text-xl mb-4">Current Resources</h3>
+                    <div id="admin-resources-list" class="space-y-4">
+                         <p class="text-gray-500 text-center col-span-full">Loading resources...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View Leads -->
+            <div class="bg-gray-800 p-6 rounded-lg">
+                <h2 class="font-display text-2xl mb-4">Collected Leads</h2>
+                <div id="admin-leads-list" class="space-y-2">
+                     <p class="text-gray-500 text-center">No leads collected yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script type="module">
+        // DO NOT CHANGE THIS CONFIGURATION
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : 'null');
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        const adminPassword = "fundare_admin_2024"; // You can change this password
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, setPersistence, inMemoryPersistence } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, onSnapshot, addDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let db, auth;
+
+            // --- UI ELEMENTS ---
+            const appContainer = document.getElementById('app-container');
+            const adminPanel = document.getElementById('admin-panel');
+            const passwordModal = document.getElementById('password-modal');
+            const passwordInput = document.getElementById('password-input');
+            const passwordError = document.getElementById('password-error');
+            const appHeader = document.getElementById('app-header');
+            const appFooter = document.getElementById('app-footer');
+            const leadCaptureModal = document.getElementById('lead-capture-modal');
+            const leadCaptureForm = document.getElementById('lead-capture-form');
+            const leadModalTitle = document.getElementById('lead-modal-title');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // --- INITIALIZATION ---
+            async function initializeFirebase() {
+                if (!firebaseConfig) {
+                    console.error("Firebase config is not available.");
+                    return;
+                }
+                try {
+                    const app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+
+                    await setPersistence(auth, inMemoryPersistence);
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    
+                    setupLeadListener();
+                } catch (error) {
+                    console.error("Firebase initialization failed:", error);
+                }
+            }
+
+            // --- DATA HANDLING ---
+            async function addLead(name, email, resourceTitle) {
+                if (!db) return;
+                const leadsCollection = collection(db, `/artifacts/${appId}/public/data/leads`);
+                try {
+                    await addDoc(leadsCollection, { name, email, resourceTitle, timestamp: serverTimestamp() });
+                } catch (error) {
+                    console.error("Error adding lead: ", error);
+                }
+            }
+
+            function setupLeadListener() {
+                if (!db) return;
+                const leadsCollection = collection(db, `/artifacts/${appId}/public/data/leads`);
+                onSnapshot(leadsCollection, (snapshot) => {
+                    const leads = [];
+                    snapshot.forEach((doc) => {
+                        leads.push({ id: doc.id, ...doc.data() });
+                    });
+                    renderAdminLeads(leads);
+                }, (error) => {
+                    console.error("Error fetching leads:", error);
+                });
+            }
+
+
+            // --- UI RENDERING ---
+            function renderAdminLeads(leads) {
+                const listElement = document.getElementById('admin-leads-list');
+                if (!listElement) return;
+                if (leads.length === 0) {
+                    listElement.innerHTML = '<p class="text-gray-500 text-center">No leads collected yet.</p>';
+                    return;
+                }
+                listElement.innerHTML = leads.sort((a,b) => b.timestamp.seconds - a.timestamp.seconds).map(lead => `
+                    <div class="bg-gray-700 p-3 rounded-md flex justify-between items-center">
+                        <div>
+                            <p class="font-semibold text-white">${lead.name} - ${lead.email}</p>
+                            <p class="text-sm text-gray-400">Downloaded: ${lead.resourceTitle}</p>
+                        </div>
+                        <p class="text-xs text-gray-500">${lead.timestamp ? new Date(lead.timestamp.seconds * 1000).toLocaleString() : ''}</p>
+                    </div>
+                `).join('');
+            }
+
+            // --- PAGE ROUTING & DYNAMIC STYLING ---
+            function navigate() {
+                const pageId = window.location.hash.substring(1) || 'fundare';
+                
+                document.querySelectorAll('.page-content').forEach(page => {
+                    page.classList.toggle('hidden', page.id !== `page-${pageId}`);
+                });
+
+                document.querySelectorAll('#nav-links-desktop a').forEach(link => {
+                    link.classList.toggle('nav-active', link.getAttribute('href') === `#${pageId}`);
+                });
+                 document.querySelectorAll('#mobile-menu a').forEach(link => {
+                    link.classList.toggle('nav-active', link.getAttribute('href') === `#${pageId}`);
+                });
+
+                appHeader.className = 'sticky top-0 z-40 transition-colors duration-300';
+                appFooter.className = 'py-6 transition-colors duration-300';
+
+                if (pageId === 'prospera') {
+                    appHeader.classList.add('bg-prospera-teal-dark');
+                    appFooter.classList.add('bg-prospera-teal-dark');
+                } else if (pageId === 'coachj') {
+                    appHeader.classList.add('bg-coachj-purple-dark');
+                    appFooter.classList.add('bg-coachj-purple-dark');
+                } else {
+                    appHeader.classList.add('bg-fundare-forest', 'bg-opacity-80', 'backdrop-blur-sm');
+                    appFooter.classList.add('bg-fundare-forest');
+                }
+
+                window.scrollTo(0, 0);
+            }
+
+            // --- EVENT LISTENERS ---
+            function setupEventListeners() {
+                window.addEventListener('hashchange', navigate);
+
+                const adminDesktopBtn = document.getElementById('admin-link-desktop');
+                const adminMobileBtn = document.getElementById('admin-link-mobile');
+                
+                const openAdminModal = () => passwordModal.classList.remove('hidden');
+                
+                adminDesktopBtn.addEventListener('click', openAdminModal);
+                adminMobileBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    openAdminModal();
+                    mobileMenu.classList.add('hidden');
+                });
+
+
+                document.getElementById('password-cancel').addEventListener('click', () => passwordModal.classList.add('hidden'));
+                document.getElementById('password-submit').addEventListener('click', () => {
+                    if (passwordInput.value === adminPassword) {
+                        passwordModal.classList.add('hidden');
+                        appContainer.classList.remove('hidden');
+                        adminPanel.classList.remove('hidden');
+                        passwordInput.value = '';
+                    } else {
+                        passwordError.classList.remove('hidden');
+                    }
+                });
+                document.getElementById('close-admin-panel').addEventListener('click', () => {
+                    adminPanel.classList.add('hidden');
+                    appContainer.classList.remove('hidden');
+                });
+
+                document.querySelectorAll('.download-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const pdfUrl = e.target.dataset.pdfUrl;
+                        const pdfTitle = e.target.dataset.pdfTitle;
+                        leadModalTitle.textContent = `Get: ${pdfTitle}`;
+                        leadCaptureForm.dataset.pdfUrl = pdfUrl;
+                        leadCaptureForm.dataset.pdfTitle = pdfTitle;
+                        leadCaptureModal.classList.remove('hidden');
+                    });
+                });
+
+                document.getElementById('lead-cancel-button').addEventListener('click', () => {
+                    leadCaptureModal.classList.add('hidden');
+                    leadCaptureForm.reset();
+                });
+
+                leadCaptureForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('lead-name').value;
+                    const email = document.getElementById('lead-email').value;
+                    const resourceTitle = e.target.dataset.pdfTitle;
+                    const pdfUrl = e.target.dataset.pdfUrl;
+
+                    addLead(name, email, resourceTitle).then(() => {
+                        const link = document.createElement('a');
+                        link.href = pdfUrl;
+                        link.download = `${resourceTitle.replace(/ /g, '_')}.pdf`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        
+                        leadCaptureModal.classList.add('hidden');
+                        leadCaptureForm.reset();
+                    });
+                });
+                
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+            
+            // --- START THE APP ---
+            initializeFirebase();
+            setupEventListeners();
+            navigate();
+        });
+    </script>
+</body>
+</html>
