@@ -19,6 +19,7 @@
     .bg-coachj-purple-dark { background-color: #4c2772; }
     .text-coachj-seafoam { color: #95bea4; }
     .text-coachj-light-grey { color: #c5c3c6; }
+    .border-coachj-seafoam { border-color: #95bea4; }
     .bg-fundare-seafoam { background-color: #95bea4; }
     .text-coachj-purple { color: #5f308f; }
     .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
@@ -29,34 +30,26 @@
   <!-- Sticky Navigation Bar -->
   <header class="bg-coachj-purple-dark sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="/index.html" class="font-display text-2xl font-bold text-fundare-seafoam">Fundare Ventures</a>
+      <a href="/index.html" class="font-display text-2xl font-bold text-coachj-light-grey">Fundare Ventures</a>
       <div class="hidden md:flex items-center space-x-8">
         <a href="/prospera.html" class="text-coachj-light-grey hover:text-coachj-seafoam transition-colors">Prospera Solutions</a>
         <a href="/coachj.html" class="text-coachj-light-grey hover:text-coachj-seafoam transition-colors">Coach J</a>
         <a href="/resources.html" class="text-coachj-light-grey hover:text-coachj-seafoam transition-colors">Resources</a>
       </div>
-      <a href="/admin.html" class="hidden md:block border border-coachj-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-coachj-purple px-4 py-2 rounded-md transition-colors text-sm font-semibold">Admin</a>
+      <a href="/admin.html" class="hidden md:block border border-coachj-light-grey text-coachj-light-grey hover:bg-coachj-light-grey hover:text-coachj-purple px-4 py-2 rounded-md transition-colors text-sm font-semibold">Admin</a>
     </nav>
   </header>
 
   <!-- Page Content -->
   <main class="flex-grow">
 
-    <!-- Hero Section with Photo -->
+    <!-- Hero Section (no photo here) -->
     <section class="pt-20 pb-10 md:pt-32 md:pb-16 relative">
-      <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center md:items-start gap-10">
-        <!-- Photo in seafoam circle -->
-        <div class="flex-shrink-0 flex justify-center items-center mb-8 md:mb-0">
-          <div class="w-48 h-48 rounded-full bg-fundare-seafoam flex items-center justify-center border-4 border-coachj-seafoam shadow-lg overflow-hidden">
-            <img src="Janice Chen.jpg" alt="Janice Chen" class="rounded-full w-full h-full object-cover" />
-          </div>
-        </div>
-        <div class="flex-1 text-center md:text-left">
-          <h2 class="text-5xl md:text-6xl font-display text-coachj-seafoam">Coach J Financial</h2>
-          <p class="text-lg text-coachj-light-grey mt-4 max-w-3xl mx-auto md:mx-0">
-            A great life doesn't happen by accident. It's designed. I'll be your coach, helping you create a sound financial plan that supports your biggest goals, day by day and year by year.
-          </p>
-        </div>
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <h2 class="text-5xl md:text-6xl font-display text-coachj-seafoam">Coach J Financial</h2>
+        <p class="text-lg text-coachj-light-grey mt-4 max-w-3xl mx-auto">
+          A great life doesn't happen by accident. It's designed. I'll be your coach, helping you create a sound financial plan that supports your biggest goals, day by day and year by year.
+        </p>
       </div>
     </section>
 
@@ -111,9 +104,17 @@
       </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- CTA Section (with centered photo above the header) -->
     <section class="py-20 text-center">
       <div class="container mx-auto px-6">
+
+        <!-- Centered photo in seafoam bordered circle -->
+        <div class="flex justify-center mb-8">
+          <div class="w-40 h-40 rounded-full border-4 border-coachj-seafoam bg-black/10 flex items-center justify-center overflow-hidden">
+            <img src="Janice Chen.jpg" alt="Janice Chen" class="rounded-full w-full h-full object-cover" />
+          </div>
+        </div>
+
         <h3 class="font-display text-4xl text-white mb-4">Ready to Make Your Pivot?</h3>
         <p class="text-coachj-light-grey max-w-2xl mx-auto mb-8">
           Stop guessing and start building. Your first consultation is free. Let's talk about what's possible when you have a coach in your corner.
