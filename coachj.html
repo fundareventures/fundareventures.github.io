@@ -26,8 +26,8 @@
 </head>
 <body class="bg-coachj-purple-dark text-white flex flex-col min-h-screen">
 
-  <!-- Navigation -->
-  <header class="bg-coachj-purple-dark">
+  <!-- Sticky Navigation Bar -->
+  <header class="bg-coachj-purple-dark sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="/index.html" class="font-display text-2xl font-bold text-fundare-seafoam">Fundare Ventures</a>
       <div class="hidden md:flex items-center space-x-8">
@@ -42,13 +42,21 @@
   <!-- Page Content -->
   <main class="flex-grow">
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Photo -->
     <section class="pt-20 pb-10 md:pt-32 md:pb-16 relative">
-      <div class="container mx-auto px-6 relative z-10 text-center">
-        <h2 class="text-5xl md:text-6xl font-display text-coachj-seafoam">Coach J Financial</h2>
-        <p class="text-lg text-coachj-light-grey mt-4 max-w-3xl mx-auto">
-          A great life doesn't happen by accident. It's designed. I'll be your coach, helping you create a sound financial plan that supports your biggest goals, day by day and year by year.
-        </p>
+      <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center md:items-start gap-10">
+        <!-- Photo in seafoam circle -->
+        <div class="flex-shrink-0 flex justify-center items-center mb-8 md:mb-0">
+          <div class="w-48 h-48 rounded-full bg-fundare-seafoam flex items-center justify-center border-4 border-coachj-seafoam shadow-lg overflow-hidden">
+            <img src="Janice Chen.jpg" alt="Janice Chen" class="rounded-full w-full h-full object-cover" />
+          </div>
+        </div>
+        <div class="flex-1 text-center md:text-left">
+          <h2 class="text-5xl md:text-6xl font-display text-coachj-seafoam">Coach J Financial</h2>
+          <p class="text-lg text-coachj-light-grey mt-4 max-w-3xl mx-auto md:mx-0">
+            A great life doesn't happen by accident. It's designed. I'll be your coach, helping you create a sound financial plan that supports your biggest goals, day by day and year by year.
+          </p>
+        </div>
       </div>
     </section>
 
