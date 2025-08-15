@@ -1,27 +1,107 @@
-<section class="py-20">
-  <div class="container mx-auto px-6">
-    <div class="bg-prospera-teal-dark rounded-lg shadow-lg grid md:grid-cols-2 gap-8 items-center p-8">
-      <!-- Left side: Approach text, button, and PHOTO below -->
-      <div class="flex flex-col items-center md:items-start">
-        <h3 class="font-display text-4xl text-prospera-seafoam mb-4 text-center md:text-left">A Coaching-First Approach</h3>
-        <p class="text-prospera-light-blue mb-6 text-center md:text-left">
-          I'm not a financial advisor selling products. I'm a coach focused on behavior, mindset, and practical decisions.
-          I create a confidential, shame-free space for your employees to take control of their money and build the life they want.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prospera Solutions | Fundare Ventures</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .bg-prospera-teal { background-color: #005b59; }
+    .bg-prospera-teal-dark { background-color: #004947; }
+    .text-prospera-seafoam { color: #95bea4; }
+    .text-prospera-light-blue { color: #779ca2; }
+    .border-prospera-seafoam { border-color: #95bea4; }
+    .bg-fundare-seafoam { background-color: #95bea4; }
+    .text-coachj-purple { color: #5f308f; }
+    .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
+  </style>
+</head>
+<body class="bg-prospera-teal text-white flex flex-col min-h-screen">
+
+  <!-- Sticky Navigation Bar -->
+  <header class="bg-prospera-teal-dark sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/index.html" class="font-display text-2xl font-bold text-prospera-light-blue">Fundare Ventures</a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/prospera.html" class="text-prospera-light-blue hover:text-prospera-seafoam transition-colors">Prospera Solutions</a>
+        <a href="/coachj.html" class="text-prospera-light-blue hover:text-prospera-seafoam transition-colors">Coach J</a>
+        <a href="/resources.html" class="text-prospera-light-blue hover:text-prospera-seafoam transition-colors">Resources</a>
+      </div>
+      <a href="/admin.html" class="hidden md:block border border-prospera-light-blue text-prospera-light-blue hover:bg-prospera-light-blue hover:text-prospera-teal px-4 py-2 rounded-md transition-colors text-sm font-semibold">Admin</a>
+    </nav>
+  </header>
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="pt-20 pb-10 md:pt-32 md:pb-16 relative">
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <h2 class="font-display text-5xl md:text-6xl text-prospera-seafoam">Prospera Solutions</h2>
+        <p class="text-lg text-prospera-light-blue mt-4 max-w-3xl mx-auto">
+          Employees don't leave for a higher paycheck; they leave to solve their financial stress. Partner with us to provide real support that improves retention, morale, and productivity.
         </p>
-        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2eIyrbtajwFAcD4ccHEG6asoQ-zvuudlrb-PoR574olr6Fu264SPmOSxcrQNyv5VBqZbLHavqR"
-           target="_blank" rel="noopener noreferrer"
-           class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-coachj-purple font-bold py-3 px-6 rounded-md transition-colors mb-6">
-          Schedule a Consultation
-        </a>
-        <div class="flex justify-center md:justify-start w-full">
-          <div class="w-40 h-40 rounded-full border-4 border-prospera-seafoam shadow-lg bg-black/10 flex items-center justify-center overflow-hidden">
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-16 bg-prospera-teal-dark">
+      <div class="container mx-auto px-6">
+        <h3 class="text-3xl font-display text-center text-white mb-10">The Hidden Cost of Financial Stress</h3>
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="p-6">
+            <p class="font-display text-6xl text-prospera-seafoam">57%</p>
+            <p class="mt-2 text-prospera-light-blue">of employees say money is their #1 source of stress.</p>
+          </div>
+          <div class="p-6">
+            <p class="font-display text-6xl text-prospera-seafoam">3+ hours</p>
+            <p class="mt-2 text-prospera-light-blue">are spent weekly by employees distracted by personal finances.</p>
+          </div>
+          <div class="p-6">
+            <p class="font-display text-6xl text-prospera-seafoam">33%</p>
+            <p class="mt-2 text-prospera-light-blue">of an employee's salary is the average cost to replace them.</p>
+          </div>
+        </div>
+        <p class="text-right text-sm text-prospera-light-blue italic mt-4 pr-6">
+          Source: 2023 PwC Employee Financial Wellness Survey
+        </p>
+      </div>
+    </section>
+
+    <!-- Coaching-First Approach Section with Photo -->
+    <section class="py-20">
+      <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <!-- Left: Text content -->
+        <div>
+          <h3 class="font-display text-4xl text-prospera-seafoam mb-4">A Coaching-First Approach</h3>
+          <p class="text-prospera-light-blue mb-6">
+            I'm not a financial advisor selling products. I'm a coach focused on behavior, mindset, and practical decisions.
+            I create a confidential, shame-free space for your employees to take control of their money and build the life they want.
+          </p>
+          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2eIyrbtajwFAcD4ccHEG6asoQ-zvuudlrb-PoR574olr6Fu264SPmOSxcrQNyv5VBqZbLHavqR"
+             target="_blank" rel="noopener noreferrer"
+             class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-coachj-purple font-bold py-3 px-6 rounded-md transition-colors">
+            Schedule a Consultation
+          </a>
+        </div>
+        <!-- Right: Circular photo -->
+        <div class="flex justify-center md:justify-end items-center">
+          <div class="w-48 h-48 rounded-full border-4 border-prospera-seafoam shadow-lg bg-black/10 flex items-center justify-center overflow-hidden">
             <img src="Janice Chen.jpg" alt="Janice Chen" class="rounded-full w-full h-full object-cover" />
           </div>
         </div>
       </div>
-      <!-- Right side: Program includes -->
-      <div>
-        <div class="bg-prospera-teal-dark p-8 rounded-lg h-full flex flex-col justify-center">
+    </section>
+
+    <!-- Program Includes Section -->
+    <section class="py-8">
+      <div class="container mx-auto px-6">
+        <div class="bg-prospera-teal-dark p-8 rounded-lg max-w-2xl mx-auto">
           <h4 class="font-display text-2xl text-white mb-4">Our Program Includes:</h4>
           <ul class="space-y-3 text-prospera-light-blue">
             <li class="flex items-start"><span class="text-prospera-seafoam mr-3">✔</span> One-on-one confidential coaching via Google Meet.</li>
@@ -32,6 +112,23 @@
           </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="py-20 text-center">
+      <div class="container mx-auto px-6">
+        <blockquote class="text-3xl italic text-prospera-light-blue border-l-4 border-prospera-seafoam pl-6 max-w-5xl mx-auto">
+          "An investment in knowledge pays the best interest."
+          <cite class="block not-italic text-xl text-prospera-seafoam mt-4">- Benjamin Franklin</cite>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-prospera-teal-dark py-6 text-center text-prospera-light-blue mt-8">
+    &copy; <script>document.write(new Date().getFullYear())</script> Fundare Ventures. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
