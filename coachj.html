@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coach J Financial | Fundare Ventures</title>
 
   <!-- Tailwind CSS -->
@@ -14,97 +14,114 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #fff; color: #222; }
+    body { font-family: 'Inter', sans-serif; }
     .font-display { font-family: 'Playfair Display', serif; }
-    .bg-coachj-purple-dark { background-color: #5f308f; }
+    .bg-coachj-purple-dark { background-color: #4c2772; }
+    .text-coachj-seafoam { color: #95bea4; }
+    .text-coachj-light-grey { color: #c5c3c6; }
+    .bg-fundare-seafoam { background-color: #95bea4; }
     .text-coachj-purple { color: #5f308f; }
-    .bg-coachj-light { background-color: #e6b898; }
-    .text-coachj-orangey { color: #e6b898; }
+    .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
   </style>
 </head>
-<body>
+<body class="bg-coachj-purple-dark text-white flex flex-col min-h-screen">
 
-  <!-- Site Navigation -->
-  <header class="bg-white shadow">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="/" class="text-2xl font-display">Fundare Ventures</a>
-      <nav class="space-x-6 text-lg">
-        <a href="/" class="hover:underline">Home</a>
-        <a href="/prospera.html" class="hover:underline">Prospera Solutions</a>
-        <a href="/coachj.html" class="hover:underline">Coach J Financial</a>
-        <a href="/resources" class="hover:underline">Resources</a>
-        <a href="/admin" class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300">Admin</a>
-      </nav>
-    </div>
+  <!-- Navigation -->
+  <header class="bg-coachj-purple-dark">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/index.html" class="font-display text-2xl font-bold text-fundare-seafoam">Fundare Ventures</a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/prospera.html" class="text-coachj-light-grey hover:text-coachj-seafoam transition-colors">Prospera Solutions</a>
+        <a href="/coachj.html" class="text-coachj-light-grey hover:text-coachj-seafoam transition-colors">Coach J</a>
+        <a href="/resources.html" class="text-coachj-light-grey hover:text-coachj-seafoam transition-colors">Resources</a>
+      </div>
+      <a href="/admin.html" class="hidden md:block border border-coachj-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-coachj-purple px-4 py-2 rounded-md transition-colors text-sm font-semibold">Admin</a>
+    </nav>
   </header>
 
-  <!-- Hero -->
-  <section class="bg-coachj-purple-dark text-white text-center px-6 py-16">
-    <h1 class="font-display text-4xl md:text-5xl mb-4">Coach J Financial</h1>
-    <p class="max-w-3xl mx-auto">
-      A great life doesn't happen by accident. It's designed. I'll be your coach, helping you
-      create a sound financial plan that supports your biggest goals, day by day and year
-      by year.
-    </p>
-  </section>
+  <!-- Page Content -->
+  <main class="flex-grow">
 
-  <!-- Stats -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto px-6 grid md:grid-cols-3 gap-8 text-center">
-      <div>
-        <p class="font-display text-5xl text-coachj-purple">66%</p>
-        <p class="mt-2">of Americans plan to work past the age of 65 because they have to.</p>
+    <!-- Hero Section -->
+    <section class="pt-20 pb-10 md:pt-32 md:pb-16 relative">
+      <div class="container mx-auto px-6 relative z-10 text-center">
+        <h2 class="text-5xl md:text-6xl font-display text-coachj-seafoam">Coach J Financial</h2>
+        <p class="text-lg text-coachj-light-grey mt-4 max-w-3xl mx-auto">
+          A great life doesn't happen by accident. It's designed. I'll be your coach, helping you create a sound financial plan that supports your biggest goals, day by day and year by year.
+        </p>
       </div>
-      <div>
-        <p class="font-display text-5xl text-coachj-purple">38%</p>
-        <p class="mt-2">of households carry credit card debt from month to month.</p>
-      </div>
-      <div>
-        <p class="font-display text-5xl text-coachj-purple">53%</p>
-        <p class="mt-2">of millennials have more debt than they have in retirement savings.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Coaching Sections -->
-  <section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-6 grid md:grid-cols-3 gap-10">
-      <div>
-        <h3 class="font-display text-2xl text-coachj-purple mb-4">Money Playbook</h3>
-        <p>Forget rigid monthly budgets. We build a flexible plan around your actual pay
-           schedule, giving you a clear forecast of your financial future and control
-           over every dollar.</p>
+    <!-- Statistics Section -->
+    <section class="py-16 bg-black/20">
+      <div class="container mx-auto px-6">
+        <h3 class="text-3xl font-display text-center text-white mb-10">The Reality of Personal Finance</h3>
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="p-6">
+            <p class="font-display text-6xl text-coachj-seafoam">66%</p>
+            <p class="mt-2 text-coachj-light-grey">of Americans plan to work past the age of 65 because they have to.</p>
+          </div>
+          <div class="p-6">
+            <p class="font-display text-6xl text-coachj-seafoam">38%</p>
+            <p class="mt-2 text-coachj-light-grey">of households carry credit card debt from month to month.</p>
+          </div>
+          <div class="p-6">
+            <p class="font-display text-6xl text-coachj-seafoam">53%</p>
+            <p class="mt-2 text-coachj-light-grey">of millennials have more debt than they have in retirement savings.</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <h3 class="font-display text-2xl text-coachj-purple mb-4">The Drills</h3>
-        <p>We automate your savings and debt payments to free up your mental energy.
-           Instead of tracking every dollar, we create a simple spending allowance
-           for variable costs, giving you financial freedom without the friction.</p>
-      </div>
-      <div>
-        <h3 class="font-display text-2xl text-coachj-purple mb-4">Game-Winning Plays</h3>
-        <p>I'll educate you on key topics like investing, negotiating your salary,
-           and making smart money moves so you can seize opportunities with confidence.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="text-center py-16 bg-coachj-purple-dark text-white">
-    <h3 class="font-display text-3xl mb-6">Ready to Make Your Pivot?</h3>
-    <p class="max-w-2xl mx-auto mb-8">
-      Stop guessing and start building. Your first consultation is free. Let's talk about what's
-      possible when you have a coach in your corner.
-    </p>
-    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2eIyrbtajwFAcD4ccHEG6asoQ-zvuudlrb-PoR574olr6Fu264SPmOSxcrQNyv5VBqZbLHavqR"
-       target="_blank"
-       class="bg-coachj-light text-coachj-purple font-bold py-3 px-6 rounded hover:bg-yellow-500">
-      Book Your Free Call
-    </a>
-  </section>
+    <!-- Coaching Areas Section -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-3 gap-8 text-center">
+          <div class="bg-black/20 p-8 rounded-lg">
+            <h3 class="font-display text-3xl text-coachj-seafoam mb-4">Money Playbook</h3>
+            <p class="text-coachj-light-grey">
+              Forget rigid monthly budgets. We build a flexible plan around your actual pay schedule,
+              giving you a clear forecast of your financial future and control over every dollar.
+            </p>
+          </div>
+          <div class="bg-black/20 p-8 rounded-lg">
+            <h3 class="font-display text-3xl text-coachj-seafoam mb-4">The Drills</h3>
+            <p class="text-coachj-light-grey">
+              We automate your savings and debt payments to free up your mental energy.
+              Instead of tracking every dollar, we create a simple spending allowance for variable costs,
+              giving you financial freedom without the friction.
+            </p>
+          </div>
+          <div class="bg-black/20 p-8 rounded-lg">
+            <h3 class="font-display text-3xl text-coachj-seafoam mb-4">Game-Winning Plays</h3>
+            <p class="text-coachj-light-grey">
+              I'll educate you on key topics like investing, negotiating your salary,
+              and making smart money moves so you can seize opportunities with confidence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 text-center">
+      <div class="container mx-auto px-6">
+        <h3 class="font-display text-4xl text-white mb-4">Ready to Make Your Pivot?</h3>
+        <p class="text-coachj-light-grey max-w-2xl mx-auto mb-8">
+          Stop guessing and start building. Your first consultation is free. Let's talk about what's possible when you have a coach in your corner.
+        </p>
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2eIyrbtajwFAcD4ccHEG6asoQ-zvuudlrb-PoR574olr6Fu264SPmOSxcrQNyv5VBqZbLHavqR"
+           target="_blank" rel="noopener noreferrer"
+           class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-coachj-purple font-bold py-4 px-8 rounded-md transition-colors text-lg">
+          Book Your Free Call
+        </a>
+      </div>
+    </section>
+
+  </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-100 text-center py-6 text-sm">
+  <footer class="bg-coachj-purple-dark py-6 text-center text-coachj-light-grey mt-8">
     &copy; <script>document.write(new Date().getFullYear())</script> Fundare Ventures. All Rights Reserved.
   </footer>
 
