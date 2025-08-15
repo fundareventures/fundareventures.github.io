@@ -11,8 +11,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #111827; }
+    body { font-family: 'Inter', sans-serif; }
     .font-display { font-family: 'Playfair Display', serif; }
+    .bg-forest {
+      background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2070&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
     .bg-fundare-forest { background-color: #3e4e3a; }
     .bg-fundare-seafoam { background-color: #95bea4; }
     .text-fundare-seafoam { color: #95bea4; }
@@ -20,12 +26,13 @@
     .text-fundare-forest { color: #3e4e3a; }
     .border-fundare-seafoam { border-color: #95bea4; }
     .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
+    .nav-active { color: #95bea4; font-weight: 500; }
   </style>
 </head>
-<body class="text-white flex flex-col min-h-screen bg-fundare-forest">
+<body class="bg-forest text-white flex flex-col min-h-screen">
 
   <!-- Sticky Responsive Navigation Bar -->
-  <header class="bg-fundare-forest sticky top-0 z-50">
+  <header class="bg-fundare-forest bg-opacity-80 backdrop-blur-sm sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="index.html" class="font-display text-2xl font-bold text-fundare-light-grey">Fundare Ventures</a>
       <div class="hidden md:flex items-center space-x-8">
@@ -40,7 +47,7 @@
         </svg>
       </button>
     </nav>
-    <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-fundare-forest text-fundare-light-grey shadow-lg hidden">
+    <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-fundare-forest bg-opacity-90 shadow-lg text-fundare-light-grey hidden">
       <a href="index.html" class="block px-6 py-3 hover:bg-fundare-seafoam text-fundare-forest font-display">Home</a>
       <a href="prospera.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Prospera Solutions</a>
       <a href="coachj.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Coach J</a>
@@ -75,10 +82,10 @@
     </section>
 
     <!-- Services/Programs -->
-    <section class="py-10">
+    <section class="pb-24">
       <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12">
         <!-- Prospera Solutions Block -->
-        <div class="bg-fundare-seafoam/10 p-8 rounded-lg flex flex-col">
+        <div class="bg-fundare-forest bg-opacity-80 p-8 rounded-lg flex flex-col shadow-lg">
           <h2 class="font-display text-2xl text-fundare-seafoam mb-4">For Your Workplace: <span class="font-display">Prospera Solutions</span></h2>
           <p class="text-fundare-seafoam mb-6">
             Financial stress is the #1 concern for most employees,
@@ -88,7 +95,7 @@
         </div>
 
         <!-- Coach J Block -->
-        <div class="bg-fundare-seafoam/10 p-8 rounded-lg flex flex-col">
+        <div class="bg-fundare-forest bg-opacity-80 p-8 rounded-lg flex flex-col shadow-lg">
           <h2 class="font-display text-2xl text-fundare-seafoam mb-4">For Individuals: <span class="font-display">Coach J Financial</span></h2>
           <p class="text-fundare-seafoam mb-6">
             Ready to take control of your financial future? I provide personalized, one-on-one coaching to help you build a plan, develop healthy money habits, and achieve your personal goals—whether that's paying off debt, saving for a home, or investing with confidence.
@@ -102,7 +109,7 @@
       </div>
     </section>
   </main>
-  <footer class="bg-fundare-forest py-6 text-center text-fundare-light-grey mt-8">
+  <footer class="bg-fundare-forest bg-opacity-80 py-6 text-center text-fundare-light-grey mt-8 shadow-lg">
     &copy; <script>document.write(new Date().getFullYear())</script> Fundare Ventures. All Rights Reserved.
   </footer>
 </body>
