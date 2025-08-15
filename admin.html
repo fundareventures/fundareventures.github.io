@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Fundare Ventures</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .bg-fundare-forest { background-color: #3e4e3a; }
+    .bg-fundare-seafoam { background-color: #95bea4; }
+    .text-fundare-seafoam { color: #95bea4; }
+    .text-fundare-light-grey { color: #c5c3c6; }
+    .text-fundare-forest { color: #3e4e3a; }
+    .border-fundare-seafoam { border-color: #95bea4; }
+    .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
+    .hover\:text-fundare-forest:hover { color: #3e4e3a; }
+  </style>
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+</head>
+<body class="bg-fundare-forest text-white flex flex-col min-h-screen">
+
+  <!-- Sticky Navigation Bar -->
+  <header class="bg-fundare-forest sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/index.html" class="font-display text-2xl font-bold text-fundare-light-grey">Fundare Ventures</a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/prospera.html" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Prospera Solutions</a>
+        <a href="/coachj.html" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Coach J</a>
+        <a href="/resources.html" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Resources</a>
+        <a href="/admin.html" class="border border-fundare-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest px-4 py-2 rounded-md transition-colors text-sm font-semibold">Admin</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-fundare-light-grey p-2 rounded focus:outline-none focus:ring-2 focus:ring-fundare-seafoam">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+        </svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-fundare-forest text-fundare-light-grey shadow-lg hidden">
+      <a href="/index.html" class="block px-6 py-3 hover:bg-fundare-seafoam text-fundare-forest font-display">Home</a>
+      <a href="/prospera.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Prospera Solutions</a>
+      <a href="/coachj.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Coach J</a>
+      <a href="/resources.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Resources</a>
+      <a href="/admin.html" class="block px-6 py-3 border-t border-fundare-seafoam">Admin</a>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('mobile-menu-btn');
+        var menu = document.getElementById('mobile-menu');
+        btn && btn.addEventListener('click', function() {
+          menu.classList.toggle('hidden');
+        });
+        menu && menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.add('hidden');
+          });
+        });
+      });
+    </script>
+  </header>
+
+  <!-- Admin Password Modal -->
+  <div id="admin-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-sm w-full relative">
+      <h2 class="font-display text-2xl mb-4 text-center text-white">Admin Access</h2>
+      <input type="password" id="admin-password" placeholder="Enter password" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-fundare-seafoam mb-4">
+      <button id="admin-login" class="w-full bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors">Log In</button>
+      <p id="admin-error" class="text-red-400 text-center mt-3 hidden">Incorrect password. Please try again.</p>
+    </div>
+  </div>
+
+  <main class="flex-grow" id="admin-content" style="display: none;">
+    <section class="pt-20 pb-10 md:pt-24 md:pb-10">
+      <div class="container mx-auto px-6">
+        <h2 class="font-display text-4xl text-fundare-seafoam text-center mb-8">Lead Download Admin Dashboard</h2>
+        <div id="leads-list" class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam max-w-5xl mx-auto text-fundare-light-grey">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-display text-2xl text-white mb-0">Collected Leads</h3>
+            <button id="refresh-btn" class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-1 px-3 rounded-md transition-colors text-sm">Refresh</button>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="w-full text-left mt-2 text-sm">
+              <thead>
+                <tr>
+                  <th class="py-2 pr-4">Name</th>
+                  <th class="py-2 pr-4">Email</th>
+                  <th class="py-2 pr-4">Resource</th>
+                  <th class="py-2 pr-4">Download Link</th>
+                  <th class="py-2">Timestamp</th>
+                </tr>
+              </thead>
+              <tbody id="leads-table">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+          <p id="no-leads" class="text-center mt-6 text-fundare-seafoam">No leads have been collected yet.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-fundare-forest py-6 text-center text-fundare-light-grey mt-8">
+    &copy; <script>document.write(new Date().getFullYear())</script> Fundare Ventures. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Firebase config (from your project)
+    const firebaseConfig = {
+      apiKey: "AIzaSyCgpGQHH7wXES45E_Lu9z3OjouSlUmFbC4",
+      authDomain: "fundare-resources.firebaseapp.com",
+      projectId: "fundare-resources",
+      storageBucket: "fundare-resources.firebasestorage.app",
+      messagingSenderId: "960266705973",
+      appId: "1:960266705973:web:6d7c4fdbef24908ab1e57c",
+      measurementId: "G-B529H15B74"
+    };
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+
+    // Admin password
+    const ADMIN_PASSWORD = "fundare_admin_2024";
+
+    // Password modal logic
+    document.getElementById('admin-login').onclick = function () {
+      var pw = document.getElementById('admin-password').value;
+      if (pw === ADMIN_PASSWORD) {
+        document.getElementById('admin-modal').style.display = 'none';
+        document.getElementById('admin-content').style.display = '';
+        fetchLeads();
+      } else {
+        document.getElementById('admin-error').classList.remove('hidden');
+      }
+    };
+    document.getElementById('admin-password').addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') document.getElementById('admin-login').click();
+    });
+
+    // Fetch leads from Firestore
+    async function fetchLeads() {
+      const table = document.getElementById('leads-table');
+      const noLeads = document.getElementById('no-leads');
+      table.innerHTML = '<tr><td colspan="5" class="text-center py-4">Loading...</td></tr>';
+      let snapshot = await db.collection("resource_leads").orderBy("timestamp", "desc").get();
+      if (snapshot.empty) {
+        table.innerHTML = '';
+        noLeads.style.display = '';
+        return;
+      }
+      noLeads.style.display = 'none';
+      table.innerHTML = '';
+      snapshot.forEach(doc => {
+        const d = doc.data();
+        let t = d.timestamp ? (new Date(d.timestamp)).toLocaleString() : '';
+        let resourceLink = d.filename ? `<a href="${d.filename}" target="_blank" class="underline text-fundare-seafoam">${d.resource || 'Download'}</a>` : '';
+        table.innerHTML += `<tr>
+            <td class="py-2 pr-4">${d.name || ''}</td>
+            <td class="py-2 pr-4">${d.email || ''}</td>
+            <td class="py-2 pr-4">${d.resource || ''}</td>
+            <td class="py-2 pr-4">${resourceLink}</td>
+            <td class="py-2">${t}</td>
+          </tr>`;
+      });
+    }
+    document.getElementById('refresh-btn').onclick = fetchLeads;
+  </script>
+</body>
+</html>
