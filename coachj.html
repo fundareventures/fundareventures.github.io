@@ -4,22 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Coach J Financial | Fundare Ventures</title>
-
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-
   <style>
     body { font-family: 'Inter', sans-serif; }
     .font-display { font-family: 'Playfair Display', serif; }
     .bg-coachj-purple-dark { background-color: #4c2772; }
     .text-coachj-seafoam { color: #95bea4; }
     .text-coachj-light-grey { color: #c5c3c6; }
-    .border-coachj-seafoam { border-color: #95bea4; }
     .bg-fundare-seafoam { background-color: #95bea4; }
     .text-coachj-purple { color: #5f308f; }
     .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
@@ -27,23 +23,51 @@
 </head>
 <body class="bg-coachj-purple-dark text-white flex flex-col min-h-screen">
 
-  <!-- Sticky Navigation Bar -->
+  <!-- Sticky Responsive Navigation Bar -->
   <header class="bg-coachj-purple-dark sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="/index.html" class="font-display text-2xl font-bold text-coachj-light-grey">Fundare Ventures</a>
+      <!-- Desktop Nav -->
       <div class="hidden md:flex items-center space-x-8">
         <a href="/prospera.html" class="text-coachj-light-grey hover:text-coachj-seafoam transition-colors">Prospera Solutions</a>
         <a href="/coachj.html" class="text-coachj-light-grey hover:text-coachj-seafoam transition-colors">Coach J</a>
         <a href="/resources.html" class="text-coachj-light-grey hover:text-coachj-seafoam transition-colors">Resources</a>
+        <a href="/admin.html" class="border border-coachj-light-grey text-coachj-light-grey hover:bg-coachj-light-grey hover:text-coachj-purple px-4 py-2 rounded-md transition-colors text-sm font-semibold">Admin</a>
       </div>
-      <a href="/admin.html" class="hidden md:block border border-coachj-light-grey text-coachj-light-grey hover:bg-coachj-light-grey hover:text-coachj-purple px-4 py-2 rounded-md transition-colors text-sm font-semibold">Admin</a>
+      <!-- Mobile Nav Trigger -->
+      <button id="mobile-menu-btn" class="md:hidden text-coachj-light-grey p-2 rounded focus:outline-none focus:ring-2 focus:ring-coachj-seafoam">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+        </svg>
+      </button>
     </nav>
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-coachj-purple-dark text-coachj-light-grey shadow-lg hidden">
+      <a href="/index.html" class="block px-6 py-3 hover:bg-coachj-purple-dark text-coachj-seafoam font-display">Home</a>
+      <a href="/prospera.html" class="block px-6 py-3 hover:bg-coachj-purple-dark">Prospera Solutions</a>
+      <a href="/coachj.html" class="block px-6 py-3 hover:bg-coachj-purple-dark">Coach J</a>
+      <a href="/resources.html" class="block px-6 py-3 hover:bg-coachj-purple-dark">Resources</a>
+      <a href="/admin.html" class="block px-6 py-3 border-t border-coachj-seafoam">Admin</a>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('mobile-menu-btn');
+        var menu = document.getElementById('mobile-menu');
+        btn && btn.addEventListener('click', function() {
+          menu.classList.toggle('hidden');
+        });
+        menu && menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.add('hidden');
+          });
+        });
+      });
+    </script>
   </header>
 
-  <!-- Page Content -->
   <main class="flex-grow">
 
-    <!-- Hero Section (no photo here) -->
+    <!-- Hero Section -->
     <section class="pt-20 pb-10 md:pt-32 md:pb-16 relative">
       <div class="container mx-auto px-6 relative z-10 text-center">
         <h2 class="text-5xl md:text-6xl font-display text-coachj-seafoam">Coach J Financial</h2>
@@ -104,17 +128,15 @@
       </div>
     </section>
 
-    <!-- CTA Section (with centered photo above the header) -->
+    <!-- CTA Section with photo above text -->
     <section class="py-20 text-center">
       <div class="container mx-auto px-6">
-
         <!-- Centered photo in seafoam bordered circle -->
         <div class="flex justify-center mb-8">
           <div class="w-40 h-40 rounded-full border-4 border-coachj-seafoam bg-black/10 flex items-center justify-center overflow-hidden">
             <img src="Janice Chen.jpg" alt="Janice Chen" class="rounded-full w-full h-full object-cover" />
           </div>
         </div>
-
         <h3 class="font-display text-4xl text-white mb-4">Ready to Make Your Pivot?</h3>
         <p class="text-coachj-light-grey max-w-2xl mx-auto mb-8">
           Stop guessing and start building. Your first consultation is free. Let's talk about what's possible when you have a coach in your corner.
@@ -126,13 +148,11 @@
         </a>
       </div>
     </section>
-
   </main>
 
   <!-- Footer -->
   <footer class="bg-coachj-purple-dark py-6 text-center text-coachj-light-grey mt-8">
     &copy; <script>document.write(new Date().getFullYear())</script> Fundare Ventures. All Rights Reserved.
   </footer>
-
 </body>
 </html>
