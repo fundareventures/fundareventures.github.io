@@ -18,7 +18,6 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-color: #3e4e3a;
     }
     .bg-fundare-forest { background-color: #3e4e3a; }
     .bg-fundare-seafoam { background-color: #95bea4; }
@@ -29,13 +28,11 @@
     .text-fundare-forest { color: #3e4e3a; }
     .text-prospera-seafoam { color: #95bea4; }
     .text-coachj-purple { color: #5f308f; }
-    .text-coachj-seafoam { color: #95bea4; }
-    .border-fundare-seafoam { border-color: #95bea4; }
     .border-coachj-purple { border-color: #5f308f; }
+    .border-fundare-seafoam { border-color: #95bea4; }
     .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
     .hover\:bg-coachj-light-grey-dark:hover { background-color: #b0aeb2; }
     .hover\:bg-coachj-light-grey:hover { background-color: #c5c3c6; }
-    .hover\:text-fundare-forest:hover { color: #3e4e3a; }
   </style>
 </head>
 <body class="bg-fundare-forest text-white flex flex-col min-h-screen">
@@ -86,37 +83,51 @@
       <div class="absolute inset-0 bg-black bg-opacity-60"></div>
       <div class="container relative z-10 flex flex-col items-center justify-center text-center">
         <p class="font-display text-2xl md:text-4xl font-bold text-fundare-light-grey drop-shadow-xl max-w-4xl mx-auto"
-            style="text-shadow: 0 3px 16px rgba(34,36,37,0.85);">
+           style="text-shadow: 0 3px 16px rgba(34,36,37,0.85);">
           A people-first philosophy, dedicated to helping you build a financial foundation as strong as your ambitions and as meaningful as your goals.
         </p>
       </div>
     </section>
 
-    <!-- Prospera Solutions Block -->
-    <section class="py-12">
-      <div class="container mx-auto px-6">
-        <div class="max-w-2xl mx-auto bg-prospera-teal rounded-lg p-8 flex flex-col shadow-lg">
-          <h2 class="font-display text-2xl md:text-3xl text-prospera-seafoam mb-4">For Your Workplace: Prospera Solutions</h2>
-          <p class="text-prospera-seafoam mb-6">
+    <!-- Prospera Solutions Section -->
+    <section class="py-14 bg-prospera-teal">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row md:items-center gap-10">
+        <!-- Circular Logo/icon with "ii" (left) -->
+        <div class="flex justify-center md:justify-start md:mr-6">
+          <div class="w-20 h-20 rounded-full bg-fundare-seafoam flex items-center justify-center shadow-lg">
+            <span class="font-display text-3xl text-prospera-teal select-none">ii</span>
+          </div>
+        </div>
+        <!-- Prospera Content -->
+        <div class="flex-1 text-center md:text-left">
+          <h2 class="font-display text-2xl md:text-3xl text-fundare-seafoam mb-4">For Your Workplace: Prospera Solutions</h2>
+          <p class="text-fundare-seafoam mb-6">
             Financial stress is the #1 concern for most employees, impacting productivity and retention. Our workplace financial wellness program provides confidential, one-on-one coaching to help your team build confidence, reduce stress, and take control of their financial lives.
           </p>
           <a href="prospera.html"
-             class="self-start bg-coachj-light-grey hover:bg-coachj-light-grey-dark text-prospera-teal font-bold py-3 px-6 rounded-md transition-colors">
+             class="bg-coachj-light-grey hover:bg-coachj-light-grey-dark text-prospera-teal font-bold py-3 px-6 rounded-md transition-colors">
             Learn More for Your Team
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Coach J Financial Block -->
-    <section class="pb-20">
-      <div class="container mx-auto px-6">
-        <div class="max-w-2xl mx-auto bg-coachj-light-grey rounded-lg p-8 flex flex-col shadow-lg">
+    <!-- Coach J Financial Section -->
+    <section class="pb-20 pt-14 bg-coachj-light-grey">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row md:items-center gap-10">
+        <!-- Photo left -->
+        <div class="flex justify-center md:justify-start md:mr-6">
+          <div class="w-20 h-20 rounded-full border-4 border-coachj-purple shadow-lg bg-white flex items-center justify-center overflow-hidden">
+            <img src="Janice Chen.jpg" alt="Janice Chen" class="rounded-full w-full h-full object-cover" />
+          </div>
+        </div>
+        <!-- Coach J Content -->
+        <div class="flex-1 text-center md:text-left">
           <h2 class="font-display text-2xl md:text-3xl text-coachj-purple mb-4">For Individuals: Coach J Financial</h2>
           <p class="text-coachj-purple mb-6">
             Ready to take control of your financial future? I provide personalized, one-on-one coaching to help you build a plan, develop healthy money habits, and achieve your personal goals—whether that's paying off debt, saving for a home, or investing with confidence.
           </p>
-          <div class="flex flex-wrap gap-4 mt-auto">
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2eIyrbtajwFAcD4ccHEG6asoQ-zvuudlrb-PoR574olr6Fu264SPmOSxcrQNyv5VBqZbLHavqR"
                target="_blank"
                class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-coachj-purple font-bold py-3 px-6 rounded-md transition-colors">
