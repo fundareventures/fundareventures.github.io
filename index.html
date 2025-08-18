@@ -11,28 +11,37 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    body { font-family: 'Inter', sans-serif; background-color: #3e4e3a; }
     .font-display { font-family: 'Playfair Display', serif; }
-    .bg-forest {
+    .bg-forest-hero {
       background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2070&auto=format&fit=crop');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-color: #3e4e3a;
     }
     .bg-fundare-forest { background-color: #3e4e3a; }
     .bg-fundare-seafoam { background-color: #95bea4; }
+    .bg-coachj-light-grey { background-color: #c5c3c6; }
+    .bg-prospera-teal { background-color: #005b59; }
     .text-fundare-seafoam { color: #95bea4; }
     .text-fundare-light-grey { color: #c5c3c6; }
     .text-fundare-forest { color: #3e4e3a; }
+    .text-prospera-seafoam { color: #95bea4; }
+    .text-coachj-purple { color: #5f308f; }
+    .text-coachj-seafoam { color: #95bea4; }
     .border-fundare-seafoam { border-color: #95bea4; }
+    .border-coachj-purple { border-color: #5f308f; }
     .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
-    .nav-active { color: #95bea4; font-weight: 500; }
+    .hover\:bg-coachj-light-grey-dark:hover { background-color: #b0aeb2; }
+    .hover\:bg-coachj-light-grey:hover { background-color: #c5c3c6; }
+    .hover\:text-fundare-forest:hover { color: #3e4e3a; }
   </style>
 </head>
-<body class="bg-forest text-white flex flex-col min-h-screen">
+<body class="bg-fundare-forest text-white flex flex-col min-h-screen">
 
   <!-- Sticky Responsive Navigation Bar -->
-  <header class="bg-fundare-forest bg-opacity-80 backdrop-blur-sm sticky top-0 z-50">
+  <header class="bg-fundare-forest sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="index.html" class="font-display text-2xl font-bold text-fundare-light-grey">Fundare Ventures</a>
       <div class="hidden md:flex items-center space-x-8">
@@ -47,7 +56,7 @@
         </svg>
       </button>
     </nav>
-    <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-fundare-forest bg-opacity-90 shadow-lg text-fundare-light-grey hidden">
+    <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-fundare-forest text-fundare-light-grey shadow-lg hidden">
       <a href="index.html" class="block px-6 py-3 hover:bg-fundare-seafoam text-fundare-forest font-display">Home</a>
       <a href="prospera.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Prospera Solutions</a>
       <a href="coachj.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Coach J</a>
@@ -71,46 +80,18 @@
   </header>
 
   <main class="flex-grow">
-    <!-- Hero Section -->
-    <section class="py-32">
-      <div class="container mx-auto px-6 text-center">
-        <h1 class="text-4xl md:text-6xl font-display font-bold text-fundare-seafoam mb-6">Fundare Ventures</h1>
-        <p class="text-xl text-fundare-light-grey max-w-3xl mx-auto mb-14">
+    <!-- Forest Quote Hero -->
+    <section class="bg-forest-hero relative py-36 md:py-48 flex items-center justify-center shadow-inner">
+      <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+      <div class="container relative z-10 flex flex-col items-center justify-center text-center">
+        <p class="font-display text-4xl md:text-6xl font-bold text-white drop-shadow-xl max-w-5xl mx-auto"
+            style="text-shadow: 0 3px 24px rgba(34,36,37,0.95);">
           A people-first philosophy, dedicated to helping you build a financial foundation as strong as your ambitions and as meaningful as your goals.
         </p>
       </div>
     </section>
 
-    <!-- Services/Programs -->
-    <section class="pb-24">
-      <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12">
-        <!-- Prospera Solutions Block -->
-        <div class="bg-fundare-forest bg-opacity-80 p-8 rounded-lg flex flex-col shadow-lg">
-          <h2 class="font-display text-2xl text-fundare-seafoam mb-4">For Your Workplace: <span class="font-display">Prospera Solutions</span></h2>
-          <p class="text-fundare-seafoam mb-6">
-            Financial stress is the #1 concern for most employees,
-            impacting productivity and retention. Our workplace financial wellness program provides confidential, one-on-one coaching to help your team build confidence, reduce stress, and take control of their financial lives.
-          </p>
-          <a href="prospera.html" class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-3 px-6 rounded-md transition-colors mt-auto self-start">Learn More for Your Team</a>
-        </div>
-
-        <!-- Coach J Block -->
-        <div class="bg-fundare-forest bg-opacity-80 p-8 rounded-lg flex flex-col shadow-lg">
-          <h2 class="font-display text-2xl text-fundare-seafoam mb-4">For Individuals: <span class="font-display">Coach J Financial</span></h2>
-          <p class="text-fundare-seafoam mb-6">
-            Ready to take control of your financial future? I provide personalized, one-on-one coaching to help you build a plan, develop healthy money habits, and achieve your personal goals—whether that's paying off debt, saving for a home, or investing with confidence.
-          </p>
-          <div class="flex flex-wrap gap-4 mt-auto">
-            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ2eIyrbtajwFAcD4ccHEG6asoQ-zvuudlrb-PoR574olr6Fu264SPmOSxcrQNyv5VBqZbLHavqR"
-                target="_blank" class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-3 px-6 rounded-md transition-colors">Book a Free Call</a>
-            <a href="coachj.html" class="border border-fundare-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest font-bold py-3 px-6 rounded-md transition-colors">Learn More</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="bg-fundare-forest bg-opacity-80 py-6 text-center text-fundare-light-grey mt-8 shadow-lg">
-    &copy; <script>document.write(new Date().getFullYear())</script> Fundare Ventures. All Rights Reserved.
-  </footer>
-</body>
-</html>
+    <!-- Prospera Solutions Block -->
+    <section class="py-14">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx
