@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources | Fundare Ventures</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .bg-fundare-forest { background-color: #3e4e3a; }
+    .bg-fundare-seafoam { background-color: #95bea4; }
+    .text-fundare-seafoam { color: #95bea4; }
+    .text-fundare-light-grey { color: #c5c3c6; }
+    .text-fundare-forest { color: #3e4e3a; }
+    .border-fundare-seafoam { border-color: #95bea4; }
+    .hover\:bg-fundare-seafoam-dark:hover { background-color: #85ab94; }
+    .hover\:text-fundare-forest:hover { color: #3e4e3a; }
+  </style>
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+</head>
+<body class="bg-fundare-forest text-white flex flex-col min-h-screen">
+
+  <!-- Sticky Responsive Navigation Bar -->
+  <header class="bg-fundare-forest sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/index.html" class="font-display text-2xl font-bold text-fundare-light-grey">Fundare Ventures</a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/prospera.html" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Prospera Solutions</a>
+        <a href="/coachj.html" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Coach J</a>
+        <a href="/resources.html" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Resources</a>
+        <a href="/admin.html" class="border border-fundare-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest px-4 py-2 rounded-md transition-colors text-sm font-semibold">Admin</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-fundare-light-grey p-2 rounded focus:outline-none focus:ring-2 focus:ring-fundare-seafoam">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16"/>
+        </svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="md:hidden absolute top-full left-0 w-full bg-fundare-forest text-fundare-light-grey shadow-lg hidden">
+      <a href="/index.html" class="block px-6 py-3 hover:bg-fundare-seafoam text-fundare-forest font-display">Home</a>
+      <a href="/prospera.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Prospera Solutions</a>
+      <a href="/coachj.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Coach J</a>
+      <a href="/resources.html" class="block px-6 py-3 hover:bg-fundare-seafoam">Resources</a>
+      <a href="/admin.html" class="block px-6 py-3 border-t border-fundare-seafoam">Admin</a>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var btn = document.getElementById('mobile-menu-btn');
+        var menu = document.getElementById('mobile-menu');
+        btn && btn.addEventListener('click', function() {
+          menu.classList.toggle('hidden');
+        });
+        menu && menu.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            menu.classList.add('hidden');
+          });
+        });
+      });
+    </script>
+  </header>
+
+  <!-- Lead Capture Modal -->
+  <div id="lead-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-xl max-w-md relative">
+      <button id="modal-close" class="absolute top-2 right-3 text-gray-400 hover:text-white text-2xl">&times;</button>
+      <h2 class="font-display text-2xl mb-4 text-center text-white" id="modal-title">Get Your Guide</h2>
+      <form id="lead-form" class="w-full">
+        <input type="text" id="lead-name" placeholder="Your Name" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-fundare-seafoam mb-4" required>
+        <input type="email" id="lead-email" placeholder="Your Email" class="w-full bg-gray-700 border border-gray-600 rounded-md p-3 text-white focus:outline-none focus:ring-2 focus:ring-fundare-seafoam mb-4" required>
+        <button type="submit" class="bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors w-full">Download</button>
+      </form>
+      <p id="modal-message" class="text-center text-green-400 mt-4 hidden">Thank you! Your download should begin shortly.</p>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="pt-20 pb-10 md:pt-32 md:pb-10 text-center">
+      <div class="container mx-auto px-6">
+        <h2 class="font-display text-5xl md:text-6xl text-fundare-seafoam">Get in the Game</h2>
+        <p class="text-lg text-fundare-light-grey mt-2 mb-6">Download your free guides below.</p>
+      </div>
+    </section>
+
+    <!-- Resource Grid -->
+    <section class="pb-20">
+      <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+
+          <!-- The Financial Scouting Report -->
+          <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+            <h3 class="font-display text-2xl text-white mb-2">The Financial Scouting Report</h3>
+            <p class="text-fundare-light-grey mb-4 flex-grow">An interactive tool to get a clear snapshot of your current financial health—the most important first step.</p>
+            <a href="scouting-report.html" target="_blank" class="mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors">
+              Open Tool
+            </a>
+          </div>
+
+          <!-- Debt Calculator -->
+          <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+            <h3 class="font-display text-2xl text-white mb-2">The "Full-Court Press" Debt Calculator</h3>
+            <p class="text-fundare-light-grey mb-4 flex-grow">An interactive tool to create a personalized debt payoff plan using the Snowball, Avalanche, or a custom method.</p>
+            <a href="debt-calculator.html" target="_blank" class="mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors">
+              Open Tool
+            </a>
+          </div>
+
+          <!-- Essential Debt & Investment Resources Guide (Google Drive Direct) -->
+          <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+            <h3 class="font-display text-2xl text-white mb-2">Essential Debt &amp; Investment Resources</h3>
+            <p class="text-fundare-light-grey mb-4 flex-grow">The perfect starting point. A curated list of the best tools, books, and podcasts to begin your journey of paying off debt and building wealth.</p>
+            <button class="mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors download-btn"
+              data-filename="https://drive.google.com/uc?export=download&id=1fcMZrdJZuW9oCgPR3ncYm4RKoAZ8999M"
+              data-title="Essential Debt & Investment Resources">
+              Download Guide
+            </button>
+          </div>
+
+          <!-- Investment Strategies Guide (Google Drive Direct) -->
+          <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+            <h3 class="font-display text-2xl text-white mb-2">Investment Strategies</h3>
+            <p class="text-fundare-light-grey mb-4 flex-grow">Ready to go beyond the basics? This guide explores multiple proven investment approaches to find what resonates with your goals.</p>
+            <button class="mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors download-btn"
+              data-filename="https://drive.google.com/uc?export=download&id=1LdDls_HfMW5NQlIUcfPrDpme_7KVeeQs"
+              data-title="Investment Strategies">
+              Download Guide
+            </button>
+          </div>
+
+          <!-- Negotiation Drills Playbook (Google Drive Direct) -->
+          <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+            <h3 class="font-display text-2xl text-white mb-2">Negotiation Drills Playbook</h3>
+            <p class="text-fundare-light-grey mb-4 flex-grow">Actionable scripts and strategies to help you confidently negotiate your salary and lower your monthly bills.</p>
+            <button class="mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors download-btn"
+              data-filename="https://drive.google.com/uc?export=download&id=1JPHRdubvTq62OMlCGpk8O84mhsE_MLt_"
+              data-title="Negotiation Drills Playbook">
+              Download Guide
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-fundare-forest py-6 text-center text-fundare-light-grey mt-8">
+    &copy; <script>document.write(new Date().getFullYear())</script> Fundare Ventures. All Rights Reserved.
+  </footer>
+
+  <!-- Lead Modal & Firebase logic -->
+  <script>
+    // Your provided Firebase config!
+    const firebaseConfig = {
+      apiKey: "AIzaSyCgpGQHH7wXES45E_Lu9z3OjouSlUmFbC4",
+      authDomain: "fundare-resources.firebaseapp.com",
+      projectId: "fundare-resources",
+      storageBucket: "fundare-resources.firebasestorage.app",
+      messagingSenderId: "960266705973",
+      appId: "1:960266705973:web:6d7c4fdbef24908ab1e57c",
+      measurementId: "G-B529H15B74"
+    };
+    if (firebaseConfig && firebaseConfig.apiKey) {
+      firebase.initializeApp(firebaseConfig);
+      var db = firebase.firestore();
+    }
+
+    // Modal logic
+    let currentPdf = null, currentTitle = null;
+    document.querySelectorAll('.download-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        currentPdf = btn.getAttribute('data-filename');
+        currentTitle = btn.getAttribute('data-title');
+        document.getElementById('modal-title').textContent = "Get: " + currentTitle;
+        document.getElementById('lead-modal').classList.remove('hidden');
+        document.getElementById('modal-message').classList.add('hidden');
+      });
+    });
+    document.getElementById('modal-close').onclick = function() {
+      document.getElementById('lead-modal').classList.add('hidden');
+      document.getElementById('lead-form').reset();
+    };
+    document.getElementById('lead-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        document.getElementById('lead-modal').classList.add('hidden');
+        document.getElementById('lead-form').reset();
+      }
+    });
+    document.getElementById('lead-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const name = document.getElementById('lead-name').value;
+      const email = document.getElementById('lead-email').value;
+      if (db && currentPdf) {
+        await db.collection("resource_leads").add({
+          name: name,
+          email: email,
+          resource: currentTitle,
+          filename: currentPdf,
+          timestamp: new Date().toISOString()
+        });
+      }
+      document.getElementById('modal-message').classList.remove('hidden');
+      setTimeout(() => {
+        document.getElementById('lead-modal').classList.add('hidden');
+        document.getElementById('lead-form').reset();
+        // Start file download:
+        window.open(currentPdf, '_blank');
+      }, 800);
+    });
+  </script>
+</body>
+</html>
