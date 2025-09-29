@@ -111,8 +111,13 @@
     <div id="app-container">
         <!-- Header & Navigation -->
         <header id="app-header" class="sticky top-0 z-40 transition-colors duration-300">
-            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#fundare" class="font-display text-2xl font-bold text-fundare-light-grey">Fundare Ventures</a>
+            <nav class="container mx-auto px-6 py-4">
+                <!-- Centered Title/Logo Area -->
+                <div class="text-center mb-4">
+                    <div class="font-display text-3xl font-bold text-fundare-light-grey">
+                        Coach J Financial | Prospera Solutions
+                    </div>
+                </div>
                 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-8" id="nav-links-desktop">
@@ -391,11 +396,14 @@
             </div>
         </main>
 
-        <footer id="app-footer" class="bg-fundare-forest py-6 transition-colors duration-300">
-            <div class="container mx-auto px-6 text-center text-fundare-light-grey">
-                &copy; 2024 Fundare Ventures. All Rights Reserved.
-            </div>
-        </footer>
+        <footer class="text-center text-sm text-fundare-light-grey mt-4 pt-4 border-t border-fundare-forest">
+    	<div>
+        Coach J Financial & Prospera Solutions - A subsidiary of Fundare Ventures
+    	</div>
+        <div class="mt-2">
+            &copy; 2024 Fundare Ventures. All Rights Reserved.
+        </div>
+    </footer>
     </div>
 
     <!-- Admin Panel (Hidden by default) -->
