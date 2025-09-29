@@ -110,42 +110,52 @@
     <!-- Main App Container -->
     <div id="app-container">
         <!-- Header & Navigation -->
-        <header id="app-header" class="sticky top-0 z-40 transition-colors duration-300">
-            <nav class="container mx-auto px-6 py-4">
-                <!-- Centered Title/Logo Area -->
-                <div class="text-center mb-4">
-                    <div class="font-display text-3xl font-bold text-fundare-light-grey">
-                        Coach J Financial | Prospera Solutions
-                    </div>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8" id="nav-links-desktop">
-                    <a href="#prospera" class="text-fundare-light-grey hover:text-prospera-seafoam transition-colors">Prospera Solutions</a>
-                    <a href="#coachj" class="text-fundare-light-grey hover:text-coachj-seafoam transition-colors">Coach J</a>
-                    <a href="#resources" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Resources</a>
-                </div>
-
-                <!-- Mobile Menu Button & Admin Button -->
-                <div class="flex items-center">
-                    <button id="admin-link-desktop" class="hidden md:block border border-coachj-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest px-4 py-2 rounded-md transition-colors text-sm font-semibold">
-                        Admin
-                    </button>
-                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-fundare-light-grey">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-            </nav>
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden">
-                <a href="#prospera" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Prospera Solutions</a>
-                <a href="#coachj" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Coach J</a>
-                <a href="#resources" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Resources</a>
-                <a href="#" id="admin-link-mobile" class="block text-center py-2 px-4 text-sm text-fundare-seafoam hover:bg-fundare-forest-dark">Admin</a>
+        <header id="app-header" class="sticky top-0 z-40 bg-fundare-forest transition-colors duration-300" data-page="home">
+    <nav class="container mx-auto px-6 py-4">
+        <!-- Centered Title/Logo Area -->
+        <div class="text-center mb-4">
+            <div class="font-display text-3xl font-bold text-fundare-light-grey">
+                Coach J Financial | Prospera Solutions
             </div>
-        </header>
+        </div>
+        
+        <!-- Navigation and Admin Button Container -->
+        <div class="flex justify-between items-center">
+            <!-- Left spacer for centering navigation -->
+            <div class="w-20"></div>
+            
+            <!-- Centered Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8 flex-1 justify-center" id="nav-links-desktop">
+                <a href="#home" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Homepage</a>
+                <a href="#coachj" class="text-fundare-light-grey hover:text-coachj-seafoam transition-colors">Coach J</a>
+                <a href="#prospera" class="text-fundare-light-grey hover:text-prospera-seafoam transition-colors">Prospera Solutions</a>
+                <a href="#resources" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Resources</a>
+            </div>
+
+            <!-- Admin Button - Fixed Right Position -->
+            <div class="flex items-center">
+                <button id="admin-link-desktop" class="hidden md:block border border-coachj-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest px-4 py-2 rounded-md transition-colors text-sm font-semibold">
+                    Admin
+                </button>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-fundare-light-grey">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-fundare-forest">
+        <a href="#home" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Homepage</a>
+        <a href="#coachj" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Coach J</a>
+        <a href="#prospera" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Prospera Solutions</a>
+        <a href="#resources" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Resources</a>
+        <a href="#" id="admin-link-mobile" class="block text-center py-2 px-4 text-sm text-fundare-seafoam hover:bg-fundare-forest-dark">Admin</a>
+    </div>
+</header>
+
 
         <main>
             <!-- Fundare Page -->
@@ -396,14 +406,18 @@
             </div>
         </main>
 
-        <footer class="text-center text-sm text-fundare-light-grey mt-4 pt-4 border-t border-fundare-forest">
-    	<div>
-        Coach J Financial & Prospera Solutions - A subsidiary of Fundare Ventures
-    	</div>
-        <div class="mt-2">
+        <!-- Footer Section with page-specific colors -->
+<footer id="app-footer" class="text-center text-sm text-fundare-light-grey mt-8 pt-6 pb-4 bg-fundare-forest border-t border-fundare-forest-light" data-page="home">
+    <div class="container mx-auto px-6">
+        <div class="mb-2">
+            Coach J Financial & Prospera Solutions - A subsidiary of Fundare Ventures
+        </div>
+        <div>
             &copy; 2024 Fundare Ventures. All Rights Reserved.
         </div>
-    </footer>
+    </div>
+</footer>
+
     </div>
 
     <!-- Admin Panel (Hidden by default) -->
