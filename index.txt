@@ -110,37 +110,47 @@
     <!-- Main App Container -->
     <div id="app-container">
         <!-- Header & Navigation -->
-        <header id="app-header" class="sticky top-0 z-40 transition-colors duration-300">
-            <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#fundare" class="font-display text-2xl font-bold text-fundare-light-grey">Fundare Ventures</a>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8" id="nav-links-desktop">
-                    <a href="#prospera" class="text-fundare-light-grey hover:text-prospera-seafoam transition-colors">Prospera Solutions</a>
-                    <a href="#coachj" class="text-fundare-light-grey hover:text-coachj-seafoam transition-colors">Coach J</a>
-                    <a href="#resources" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Resources</a>
-                </div>
-
-                <!-- Mobile Menu Button & Admin Button -->
-                <div class="flex items-center">
-                    <button id="admin-link-desktop" class="hidden md:block border border-coachj-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest px-4 py-2 rounded-md transition-colors text-sm font-semibold">
-                        Admin
-                    </button>
-                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-fundare-light-grey">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-            </nav>
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden">
-                <a href="#prospera" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Prospera Solutions</a>
-                <a href="#coachj" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Coach J</a>
-                <a href="#resources" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Resources</a>
-                <a href="#" id="admin-link-mobile" class="block text-center py-2 px-4 text-sm text-fundare-seafoam hover:bg-fundare-forest-dark">Admin</a>
+<header id="app-header" class="sticky top-0 z-40 transition-colors duration-300">
+    <nav class="container mx-auto px-6 py-4">
+        <!-- Centered Title/Logo Area -->
+        <div class="text-center mb-4">
+            <div class="font-display text-3xl font-bold text-fundare-light-grey">
+                Coach J Financial | Prospera Solutions
             </div>
-        </header>
+        </div>
+        
+        <!-- Navigation Below Title -->
+        <div class="flex justify-center items-center">
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex items-center space-x-8" id="nav-links-desktop">
+                <a href="#coachj" class="text-fundare-light-grey hover:text-coachj-seafoam transition-colors">Coach J</a>
+                <a href="#prospera" class="text-fundare-light-grey hover:text-prospera-seafoam transition-colors">Prospera Solutions</a>
+                <a href="#resources" class="text-fundare-light-grey hover:text-fundare-seafoam transition-colors">Resources</a>
+            </div>
+
+            <!-- Mobile Menu Button & Admin Button -->
+            <div class="flex items-center ml-8">
+                <button id="admin-link-desktop" class="hidden md:block border border-coachj-seafoam text-fundare-seafoam hover:bg-fundare-seafoam hover:text-fundare-forest px-4 py-2 rounded-md transition-colors text-sm font-semibold">
+                    Admin
+                </button>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-fundare-light-grey">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden">
+        <a href="#coachj" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Coach J</a>
+        <a href="#prospera" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Prospera Solutions</a>
+        <a href="#resources" class="block text-center py-2 px-4 text-sm text-fundare-light-grey hover:bg-fundare-forest-dark">Resources</a>
+        <a href="#" id="admin-link-mobile" class="block text-center py-2 px-4 text-sm text-fundare-seafoam hover:bg-fundare-forest-dark">Admin</a>
+    </div>
+</header>
+
 
         <main>
             <!-- Fundare Page -->
@@ -337,7 +347,7 @@
                              <p class="text-lg text-fundare-light-grey mt-2">Download your free guides below.</p>
                         </div>
                         <div id="resources-list" class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                            <!-- Resource: Scouting Report -->
+                            <!-- Resource 1: Scouting Report -->
                             <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
                                 <h3 class="font-display text-2xl text-white mb-2">The Financial Scouting Report</h3>
                                 <p class="text-fundare-light-grey mb-4 flex-grow">An interactive tool to get a clear snapshot of your current financial health—the most important first step.</p>
@@ -345,7 +355,7 @@
                                     Open Tool
                                 </a>
                             </div>
-                             <!-- Resource: Debt Calculator -->
+                             <!-- Resource 2: Debt Calculator -->
                             <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
                                 <h3 class="font-display text-2xl text-white mb-2">The "Full-Court Press" Debt Calculator</h3>
                                 <p class="text-fundare-light-grey mb-4 flex-grow">An interactive tool to create a personalized debt payoff plan using the Snowball, Avalanche, or a custom method.</p>
@@ -353,7 +363,7 @@
                                     Open Tool
                                 </a>
                             </div>
-                            <!-- Resource 1 -->
+                            <!-- Resource 3: Debt & Investment -->
                             <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
                                 <h3 class="font-display text-2xl text-white mb-2">Essential Debt & Investment Resources</h3>
                                 <p class="text-fundare-light-grey mb-4 flex-grow">The perfect starting point. A curated list of the best tools, books, and podcasts to begin your journey of paying off debt and building wealth.</p>
@@ -361,7 +371,7 @@
                                     Download Guide
                                 </button>
                             </div>
-                            <!-- Resource 2 -->
+                            <!-- Resource 4: Investment Strategies -->
                             <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
                                 <h3 class="font-display text-2xl text-white mb-2">Investment Strategies</h3>
                                 <p class="text-fundare-light-grey mb-4 flex-grow">Ready to go beyond the basics? This guide explores multiple proven investment approaches to find what resonates with your goals.</p>
@@ -369,11 +379,19 @@
                                     Download Guide
                                 </button>
                             </div>
-                             <!-- Resource 3: Negotiation Guide -->
+                             <!-- Resource 5: Negotiation Guide -->
                             <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
                                 <h3 class="font-display text-2xl text-white mb-2">Negotiation Drills Playbook</h3>
                                 <p class="text-fundare-light-grey mb-4 flex-grow">Actionable scripts and strategies to help you confidently negotiate your salary and lower your monthly bills.</p>
                                 <button class="download-btn mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors" data-pdf-url="https://drive.google.com/file/d/1JPHRdubvTq62OMlCGpk8O84mhsE_MLt_/view?usp=drive_link" data-pdf-title="Negotiation Drills Playbook">
+                                    Download Guide
+                                </button>
+                            </div>
+                             <!-- Resource 6: Credit Freeze -->
+                            <div class="bg-gray-800/50 p-6 rounded-lg border border-fundare-seafoam flex flex-col items-center text-center">
+                                <h3 class="font-display text-2xl text-white mb-2">Protect Your Credit</h3>
+                                <p class="text-fundare-light-grey mb-4 flex-grow">Step by Step Instructions on How to Freeze Your Credit.</p>
+                                <button class="download-btn mt-auto bg-fundare-seafoam hover:bg-fundare-seafoam-dark text-fundare-forest font-bold py-2 px-4 rounded-md transition-colors" data-pdf-url="https://drive.google.com/file/d/1yA8gh1q_YrpRzbR7Cif7Bp5dc6Bwc-Yl/view?usp=drive_link" data-pdf-title="Credit Freeze Guide">
                                     Download Guide
                                 </button>
                             </div>
@@ -383,11 +401,14 @@
             </div>
         </main>
 
-        <footer id="app-footer" class="bg-fundare-forest py-6 transition-colors duration-300">
-            <div class="container mx-auto px-6 text-center text-fundare-light-grey">
-                &copy; 2024 Fundare Ventures. All Rights Reserved.
-            </div>
-        </footer>
+        <footer class="text-center text-sm text-fundare-light-grey mt-4 pt-4 border-t border-fundare-forest">
+    	<div>
+        Coach J Financial & Prospera Solutions - A subsidiary of Fundare Ventures
+    	</div>
+    <div class="mt-2">
+        &copy; 2024 Fundare Ventures. All Rights Reserved.
+    </div>
+</footer>
     </div>
 
     <!-- Admin Panel (Hidden by default) -->
